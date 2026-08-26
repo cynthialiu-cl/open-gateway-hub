@@ -89,6 +89,14 @@ var APP_DATA = {
   ],
   dimLabels:["API 上线数","API 品类覆盖","商用化进展","安全合规","计费灵活","开发者生态"],
   dimWeights:["25%","20%","20%","12%","13%","10%"],
+  dimExplain:[
+    "已上线的 CAMARA API 数量。评估标准：运营商已商用发布的 API 数量越多得分越高（5分=15+个API，3分=8-10个，1分=3个以下）",
+    "覆盖的 API 类别数。评估标准：认证/设备/位置/网络质量/计费/边缘/IoT 等 7 大类中覆盖几类（5分=全覆盖，3分=覆盖4类，1分=仅认证类）",
+    "商用化部署程度。评估标准：有真实商用案例+收入=5分，有试点但无收入=3分，仅宣布未部署=1分",
+    "数据安全与合规认证。评估标准：通过 GDPR/PCI DSS/ISO 27001 等认证情况（5分=多项认证，3分=部分认证，1分=未公开认证）",
+    "计费模式多样性。评估标准：按次/阶梯/套餐/批发分成/直销等模式覆盖度（5分=5种以上，3分=2-3种，1分=仅直销）",
+    "开发者生态成熟度。评估标准：是否有开发者门户、SDK、沙箱测试、文档质量、开发者数量（5分=完整门户+850+开发者，3分=有门户但规模小，1分=无公开门户）"
+  ],
   // CAMARA API 清单
   camaraAPIs:[
     {name:"Number Verification",desc:"验证手机号与设备 SIM 一致性(无 SMS OTP)",status:"Stable",version:"v2.1.0",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:35,camaraUrl:"https://github.com/camaraproject/NumberVerification/releases"},
@@ -210,16 +218,19 @@ var APP_DATA = {
     {model:"套餐订阅",vendors:"Sinch, Infobip",desc:"月度/年度 API 套餐，含一定调用量"},
     {model:"运营商直销",vendors:"Telefónica, 中国联通",desc:"运营商直接向企业销售 API 服务"}
   ],
-  // 分层参考架构 (来源: GSMA Open Gateway 白皮书 + CAMARA 架构规范 + TM Forum Open API 框架)
-  architectureSource:"本架构基于 GSMA Open Gateway 白皮书、CAMARA 项目架构规范及 TM Forum Open API 框架综合整理",
+  // 分层参考架构
+  // 来源依据: GSMA Open Gateway 白皮书 (定义运营商网络能力暴露框架) + CAMARA API 架构规范 (定义 API 标准化接口) + TM Forum Open API 框架 (定义 BSS/OSS 开放标准)
+  // 层级划分逻辑: 从上到下为"从开发者到网络"的数据流路径，上层消费下层能力，下层为上层提供服务
+  // 层级关联: 每层通过标准化接口(REST API/OpenAPI)与相邻层通信，CAMARA 规范贯穿"接入→聚合→网关→暴露"四层
+  architectureSource:"来源: GSMA Open Gateway 白皮书(网络能力暴露框架) + CAMARA 架构规范(API 标准化接口) + TM Forum Open API 框架(BSS/OSS 开放标准)。层级逻辑: 从上到下为开发者→网络的数据流路径，上层消费下层能力，CAMARA 规范贯穿接入→聚合→网关→暴露四层",
   architecture:[
-    {layer:"开发者接入层",desc:"API 门户、文档、SDK、沙箱测试",vendors:["GSMA","CAMARA","TM Forum","Telefónica Developer Hub"]},
-    {layer:"渠道聚合层",desc:"CPaaS/云厂商聚合多运营商 API，统一接口",vendors:["AWS","Twilio","Vonage","Infobip","Aduna","CITIC Telecom NaaS"]},
-    {layer:"API 网关层",desc:"认证授权、限流、路由、计量",vendors:["Nokia","Telefónica","Orange","华为"]},
-    {layer:"能力编排层",desc:"API 组合、Agentic AI 编排、A2A 协议",vendors:["Telefónica","Nokia","Google Cloud","AWS"]},
-    {layer:"网络能力暴露层 (NEF)",desc:"5G 核心网 NEF 映射、CAMARA API 规范实现",vendors:["华为","中兴","Nokia","Ericsson"]},
-    {layer:"核心网/网络层",desc:"5G SA、EPC、IMS 等网络基础设施",vendors:["华为","中兴","Ericsson","Nokia","CITIC Telecom"]},
-    {layer:"BSS/OSS 层",desc:"计费、配额、用户管理、运营支撑",vendors:["Amdocs","华为","亚信科技","新华三"]}
+    {layer:"1. 开发者接入层",desc:"API 门户、文档、SDK、沙箱测试环境。开发者在此层注册、查阅 API 文档、下载 SDK、在沙箱中测试 API 调用",vendors:["GSMA","CAMARA","TM Forum","Telefónica Developer Hub"],relation:"向下调用渠道聚合层或直连 API 网关层获取能力"},
+    {layer:"2. 渠道聚合层",desc:"CPaaS/云厂商/NaaS 平台聚合多家运营商 API，提供统一接口和统一计费，企业无需逐一对接每个运营商",vendors:["AWS","Twilio","Vonage","Infobip","Aduna","CITIC Telecom NaaS"],relation:"向上为开发者层提供统一接口，向下通过 API 网关层调用运营商能力"},
+    {layer:"3. API 网关层",desc:"认证授权、OAuth2 令牌管理、限流、路由、计量、API 版本管理。运营商在此层控制 API 访问权限和用量",vendors:["Nokia","Telefónica","Orange","华为"],relation:"向上接收聚合层或直连开发者的请求，向下将请求转发至能力编排层或直接到 NEF"},
+    {layer:"4. 能力编排层",desc:"API 组合编排、Agentic AI 自动发现和编排 API、A2A 协议跨运营商协同。可将多个 API 组合为复杂业务流程",vendors:["Telefónica","Nokia","Google Cloud","AWS"],relation:"向上为网关层提供组合能力，向下调用 NEF 层暴露的网络能力"},
+    {layer:"5. 网络能力暴露层 (NEF)",desc:"5G 核心网 NEF (Network Exposure Function) 映射。将 5G 网络内部能力(QoS/位置/状态)映射为 CAMARA 标准 API 规范",vendors:["华为","中兴","Nokia","Ericsson"],relation:"向上为编排层/网关层提供标准 API，向下调用核心网网元能力"},
+    {layer:"6. 核心网/网络层",desc:"5G SA 独立组网、EPC、IMS 等网络基础设施。提供移动性管理、会话管理、策略控制等基础网络能力",vendors:["华为","中兴","Ericsson","Nokia","CITIC Telecom"],relation:"向上为 NEF 层提供网络网元接口，是所有 API 能力的最终来源"},
+    {layer:"7. BSS/OSS 层",desc:"计费系统、配额管理、用户身份管理、运营支撑系统。支撑 API 的计量计费、用户签约和运营管理",vendors:["Amdocs","华为","亚信科技","新华三"],relation:"贯穿所有层，为 API 网关层提供计费数据，为开发者层提供用量统计，为 NEF 层提供策略控制"}
   ],
   // API 调用量排行
   apiCallVolume:[

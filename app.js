@@ -87,17 +87,25 @@ function renderRanking() {
 
 // ===== M2: 分项能力排名 =====
 function renderDimRanking(dimIdx) {
+  // 维度说明
+  var explain = D.dimExplain && D.dimExplain[dimIdx] ? D.dimExplain[dimIdx] : '';
+  var explainHtml = explain ? '<div class="dim-explain" id="dimExplain">' +
+    '<span class="dim-explain-icon">&#9432;</span>' +
+    '<span><strong>' + esc(D.dimLabels[dimIdx]) + ':</strong> ' + esc(explain) + '</span>' +
+    '</div>' : '';
+
   var sorted = D.operators.slice().sort(function(a, b) {
     return b.dims[dimIdx] - a.dims[dimIdx];
   });
-  var html = sorted.map(function(op, i) {
+  var html = explainHtml + sorted.map(function(op, i) {
     var rank = i + 1;
     var numClass = rank === 1 ? 'r1' : rank === 2 ? 'r2' : rank === 3 ? 'r3' : 'rx';
     var score = op.dims[dimIdx];
     var pct = (score / 5) * 100;
+    var citicHighlight = op.name === 'CITIC Telecom' ? ';color:var(--accent2);font-weight:700' : '';
     return '<div class="rank-item">' +
       '<div class="rank-num ' + numClass + '">' + rank + '</div>' +
-      '<div class="rank-name">' + esc(op.name) + '</div>' +
+      '<div class="rank-name" style="' + citicHighlight + '">' + esc(op.name) + (op.name === 'CITIC Telecom' ? ' ★' : '') + '</div>' +
       '<span style="font-size:11px;color:var(--tx3);min-width:80px">' + esc(op.country) + '</span>' +
       '<div class="rank-bar"><div class="rank-bar-fill" style="width:' + pct + '%"></div></div>' +
       '<div class="rank-score">' + score + '/5</div>' +
@@ -412,20 +420,22 @@ function renderBilling() {
 function renderArchitecture() {
   var html = '';
   if (D.architectureSource) {
-    html += '<div style="margin-bottom:14px;padding:10px 14px;background:rgba(13,115,119,.05);border:1px solid rgba(13,115,119,.12);border-radius:var(--radius-sm);font-size:12px;color:var(--tx2)"><strong style="color:var(--accent)">架构来源:</strong> ' + esc(D.architectureSource) + '</div>';
+    html += '<div style="margin-bottom:14px;padding:10px 14px;background:rgba(13,115,119,.05);border:1px solid rgba(13,115,119,.12);border-radius:var(--radius-sm);font-size:12px;color:var(--tx2);line-height:1.7"><strong style="color:var(--accent)">架构来源与说明:</strong> ' + esc(D.architectureSource) + '</div>';
   }
   html += '<div class="arch-stack">';
   D.architecture.forEach(function(a, i) {
     var vendorTags = (a.vendors || []).map(function(v) {
       return '<span class="vendor-tag' + (v.indexOf('CITIC') >= 0 ? ' citic' : '') + '">' + esc(v) + '</span>';
     }).join('');
+    var arrow = i < D.architecture.length - 1 ? '<div class="layer-arrow">&#8595;</div>' : '';
     html += '<div class="arch-layer">' +
       '<div class="layer-num">' + (i + 1) + '</div>' +
       '<div class="layer-content">' +
       '<div class="layer-name">' + esc(a.layer) + '</div>' +
       '<div class="layer-desc">' + esc(a.desc) + '</div>' +
       '<div class="layer-vendors" style="margin-top:6px">' + vendorTags + '</div>' +
-      '</div></div>';
+      (a.relation ? '<div class="layer-relation"><span class="relation-label">关联:</span> ' + esc(a.relation) + '</div>' : '') +
+      '</div></div>' + arrow;
   });
   html += '</div>';
   document.getElementById('archContainer').innerHTML = html;

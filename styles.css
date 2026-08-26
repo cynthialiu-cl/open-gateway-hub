@@ -121,6 +121,9 @@ table .c{text-align:center}
 .arch-layer .layer-name{font-weight:700;font-size:14px}
 .arch-layer .layer-desc{font-size:12px;color:var(--tx3);margin-top:2px}
 .arch-layer .layer-vendors{display:flex;gap:5px;flex-wrap:wrap}
+.arch-layer .layer-relation{margin-top:6px;font-size:11px;color:var(--tx3);line-height:1.5;padding:4px 8px;background:var(--bg);border-radius:4px;border-left:2px solid var(--accent2)}
+.relation-label{font-weight:600;color:var(--accent2)}
+.layer-arrow{text-align:center;font-size:16px;color:var(--bd2);line-height:1;margin:2px 0}
 .arch-layer .vendor-tag{font-size:11px;background:var(--bg3);border:1px solid var(--bd2);padding:3px 10px;border-radius:4px;color:var(--tx2)}
 .vendor-tag.citic{background:rgba(193,120,23,.1);border-color:rgba(193,120,23,.2);color:var(--accent2);font-weight:600}
 .scenario-source{margin-bottom:8px;font-size:11px}
@@ -140,6 +143,11 @@ table .c{text-align:center}
 .view-tab.active{background:var(--accent);color:#fff;border-color:var(--accent)}
 .view-content{display:none}
 .view-content.active{display:block}
+
+/* 分项能力维度说明 */
+.dim-explain{background:rgba(13,115,119,.05);border:1px solid rgba(13,115,119,.12);border-radius:var(--radius-sm);padding:10px 14px;margin-bottom:10px;font-size:12px;color:var(--tx2);line-height:1.6;display:flex;gap:6px;align-items:flex-start}
+.dim-explain-icon{color:var(--accent);font-size:14px;flex-shrink:0;margin-top:1px}
+.dim-explain strong{color:var(--accent);margin-right:4px}
 
 .toast{position:fixed;bottom:60px;right:24px;z-index:9999;background:var(--bg2);border:1px solid var(--accent);padding:12px 22px;border-radius:var(--radius);color:var(--tx);font-size:13px;box-shadow:var(--shadow-lg);transform:translateY(100px);opacity:0;transition:all .3s}
 .toast.show{transform:translateY(0);opacity:1}
