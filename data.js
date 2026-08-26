@@ -7,11 +7,11 @@ var APP_DATA = {
     version: "2026-08-26",
     lastUpdate: "2026-08-26 10:00",
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
-    newsCount: 26,
+    newsCount: 32,
     operatorCount: 86,
     apiCount: 33,
     marketCount: 65,
-    channelPartners: 77,
+    channelPartners: 79,
     baseline: "GSMA Open Gateway + CAMARA + TM Forum",
     dataSources: {
       gsma: {name:"GSMA 官网",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
@@ -32,6 +32,12 @@ var APP_DATA = {
   },
   // M1: 行业动态
   news: [
+    {date:"2026-08-20",cat:"industry",catName:"行业",vendor:"GSMA",title:"GSMA Open Gateway 工作周报: 渠道合作伙伴达 79 家(Codec 签约)，发布车联网和无人机 2 项案例研究，MENA Ignite 黑客马拉松报名超 1100 人",source:"GSMA Open Gateway Flash Report",region:"全球",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
+    {date:"2026-08-20",cat:"industry",catName:"行业",vendor:"中国联通/奇瑞/蔚来/中兴",title:"案例研究: 中国联通联合奇瑞汽车、蔚来汽车、中兴通讯发布通信质量(QoD)车联网应用案例",source:"GSMA 案例研究",region:"中国内地",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/gsma_study/china-unicom-chery-auto-nio-auto-zte-connected-mobility/"},
+    {date:"2026-08-20",cat:"industry",catName:"行业",vendor:"Turk Telekom",title:"案例研究: 土耳其电信(Turk Telekom)发布基于 Open Gateway QoD API 的无人机安全飞行案例",source:"GSMA 案例研究",region:"欧洲",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/gsma_study/turk-telekom-enabling-safe-drone-operations/"},
+    {date:"2026-08-20",cat:"vendor",catName:"运营商",vendor:"LG U+",title:"韩国 LG U+ 即将推出 6 个 CAMARA API，加速亚太地区 Open Gateway 部署",source:"GSMA Flash Report",region:"亚洲",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
+    {date:"2026-08-20",cat:"industry",catName:"行业",vendor:"GSMA Fusion",title:"GSMA Fusion 启动四大垂直行业推广(航空/汽车/金融服务/媒体娱乐)，9月9日 LinkedIn 直播品牌推广",source:"GSMA Flash Report",region:"全球",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
+    {date:"2026-08-20",cat:"industry",catName:"行业",vendor:"GSMA/Ektar/Vydens",title:"需求侧: Ektar Technologies 和 Vydens 发布需求说明书(SoR)，渠道合作伙伴自助注册计划收到 15 份意向书",source:"GSMA Flash Report",region:"全球",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
     {date:"2026-08-25",cat:"vendor",catName:"运营商",vendor:"GSMA",title:"GSMA H1 2026报告: 渠道合作伙伴从25家增至71家，英国银行Scam Signal API部署后欺诈损失减少44%",source:"GSMA/LinkedIn",region:"全球",url:"https://www.linkedin.com/posts/matteo-di-battista-75584b15b_networkapis-opengateway-fraudprevention-activity-7491400899257556994-uoZW"},
     {date:"2026-08-13",cat:"industry",catName:"行业",vendor:"BlackDice",title:"BlackDice 加入 GSMA Open Gateway 渠道合作伙伴计划，提供 AI 驱动的网络级反欺诈安全能力",source:"EIN Presswire",region:"全球",url:"https://www.einpresswire.com/article/933906732/blackdice-joins-gsma-open-gateway-as-channel-partner-sharing-ai-powered-cyber-defence-to-the-global-operator-ecosystem"},
     {date:"2026-08-14",cat:"tech",catName:"技术趋势",vendor:"Twilio/GSMA",title:"MWC26 Open Gateway Summit: Twilio 日处理 3080 万笔 API 交易，反欺诈 API 覆盖全球近 2/3 移动连接",source:"5GWorldPro",region:"全球",url:"https://5gworldpro.com/blog/2026/08/14/network-apis-and-camara-why-telecoms-api-monetization-push-is-finally-working-in-2026/"},
@@ -153,6 +159,7 @@ var APP_DATA = {
     {name:"Meta",type:"技术伙伴",apis:"Number Verify",devPortal:"https://developers.facebook.com/"},
     {name:"Oracle",type:"技术伙伴",apis:"Carrier Billing",devPortal:"https://docs.oracle.com/"},
     {name:"BlackDice",type:"安全/反欺诈",apis:"AI 驱动网络级反欺诈安全能力",devPortal:"https://www.blackdice.com/"},
+    {name:"Codec",type:"CPaaS",apis:"Number Verify, SIM Swap, OTP",devPortal:"https://www.codec.com/"},
     {name:"CITIC Telecom",type:"NaaS/聚合",apis:"Number Verify, SIM Swap, QoD, Location, OTP",devPortal:"https://www.citictel.com/"}
   ],
   // 市场规模数据
@@ -240,6 +247,36 @@ var APP_DATA = {
   ],
   // M6: 商用案例与试商用案例
   commercialCases:[
+    {
+      company:"中国联通 × 奇瑞汽车 × 蔚来汽车 × 中兴通讯",
+      country:"中国",
+      region:"中国内地",
+      industry:"汽车/车联网",
+      apis:["Quality on Demand (QoD)","Communications Quality"],
+      apiCount:2,
+      type:"商用",
+      painPoint:"智能网联汽车需要稳定低延迟的网络通信保障，车联网服务在不同网络条件下体验不一致",
+      solution:"中国联通联合奇瑞汽车、蔚来汽车和中兴通讯，基于 Open Gateway QoD API 为车联网场景提供通信质量保障，实现车辆与云端之间的稳定连接",
+      results:"发布 GSMA 官方案例研究，展示 QoD API 在车联网领域的商业化应用",
+      source:"GSMA 案例研究",
+      sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/gsma_study/china-unicom-chery-auto-nio-auto-zte-connected-mobility/",
+      date:"2026-08-20"
+    },
+    {
+      company:"Turk Telekom (土耳其电信)",
+      country:"土耳其",
+      region:"欧洲",
+      industry:"无人机/航空",
+      apis:["Quality on Demand (QoD)","Device Location Verification"],
+      apiCount:2,
+      type:"商用",
+      painPoint:"无人机飞行需要实时网络通信保障和位置验证，网络不稳定影响飞行安全",
+      solution:"基于 Open Gateway QoD API 为无人机飞行提供网络质量保障，结合 Device Location Verification 验证无人机位置在授权飞行区域内",
+      results:"发布 GSMA 官方案例研究，展示 Open Gateway API 在无人机安全飞行领域的应用",
+      source:"GSMA 案例研究",
+      sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/gsma_study/turk-telekom-enabling-safe-drone-operations/",
+      date:"2026-08-20"
+    },
     {
       company:"Itaú Unibanco",
       country:"巴西",
