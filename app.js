@@ -131,23 +131,36 @@ function renderHeatmap() {
   document.getElementById('heatmapContainer').innerHTML = html;
 }
 
-// ===== M2: CAMARA API 清单 =====
+// ===== M2: CAMARA API 清单（含版本和标准进展） =====
 function renderCamaraAPIs() {
-  var html = '<div class="tbl-wrap"><table><thead><tr>' +
-    '<th>API 名称</th><th>版本</th><th>说明</th><th>状态</th><th>分类</th><th>商用市场</th><th>CAMARA</th>' +
+  var html = '<div style="margin-bottom:10px;padding:8px 14px;background:rgba(13,115,119,.05);border:1px solid rgba(13,115,119,.1);border-radius:var(--radius-sm);font-size:12px;color:var(--tx2)">' +
+    '<strong style="color:var(--accent)">版本说明:</strong> Stable = 正式发布可商用 · Release Candidate (RC) = 候选版测试中 · Beta = 早期测试 · ' +
+    '<a href="https://github.com/camaraproject/Commonalities" target="_blank" style="font-size:12px">Commonalities</a> 和 ' +
+    '<a href="https://github.com/camaraproject/IdentityAndConsentManagement" target="_blank" style="font-size:12px">ICM</a> 是所有 API 必须遵循的基础设计规范和安全框架' +
+    '</div>';
+  html += '<div class="tbl-wrap"><table><thead><tr>' +
+    '<th>API 名称</th><th>当前版本</th><th>发布标签</th><th>状态</th><th>说明</th><th>分类</th><th>商用市场</th><th>GitHub</th>' +
     '</tr></thead><tbody>';
   D.camaraAPIs.forEach(function(api) {
     var statusClass = api.status === 'Stable' ? 'green-cell' : 'yellow-cell';
+    var statusText = api.status;
+    if (api.version && api.version.indexOf('rc') >= 0) {
+      statusClass = 'yellow-cell';
+      statusText = 'RC';
+    }
     html += '<tr>' +
       '<td style="font-weight:600">' + esc(api.name) + '</td>' +
       '<td class="c" style="font-weight:600;color:var(--accent2)">' + esc(api.version || '-') + '</td>' +
-      '<td style="white-space:normal;max-width:220px">' + esc(api.desc) + '</td>' +
-      '<td class="' + statusClass + '">' + esc(api.status) + '</td>' +
+      '<td class="c">' + esc(api.releaseTag || '-') + '</td>' +
+      '<td class="' + statusClass + '">' + esc(statusText) + '</td>' +
+      '<td style="white-space:normal;max-width:200px">' + esc(api.desc) + '</td>' +
       '<td>' + esc(api.category) + '</td>' +
       '<td class="c">' + api.launchMarkets + '</td>' +
-      '<td><a href="' + esc(api.camaraUrl || '#') + '" target="_blank" style="font-size:12px">' + esc(api.releaseTag || '查看') + '</a></td>' +
+      '<td><a href="' + esc(api.camaraUrl || '#') + '" target="_blank" style="font-size:12px">Releases</a></td>' +
       '</tr>';
   });
+  // 添加基础规范行
+  html += '<tr style="background:rgba(109,40,217,.03)"><td colspan="8" style="font-size:11px;color:var(--tx3);font-style:italic">基础规范: Commonalities v0.6.0 (r3.3) — API 设计指南 | Identity & Consent Management v0.4.0 (r3.3) — 认证授权与隐私框架 — 以上两个规范非 API，是所有 CAMARA API 必须遵循的基础规则</td></tr>';
   html += '</tbody></table></div>';
   document.getElementById('camaraApiList').innerHTML = html;
 }
@@ -875,7 +888,6 @@ function renderAll() {
   renderSources();
   renderDataSources();
   renderRegulatory();
-  renderCamaraStandards();
   renderCompliance();
 }
 
