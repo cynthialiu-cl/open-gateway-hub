@@ -9,11 +9,11 @@ var APP_DATA = {
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 32,
     operatorCount: 86,
-    apiCount: 33,
+    apiCount: 36,
     commercialApiCount: 20,
     marketCount: 65,
     channelPartners: 79,
-    dataNote: "H1 2026 渠道合作伙伴 77 家，8 月最新 79 家(含 IBM + Codec)；33 个 CAMARA 认证 API 含 Beta，20 个已商用部署",
+    dataNote: "H1 2026 渠道合作伙伴 77 家，8 月最新 79 家(含 IBM + Codec)；CAMARA 生态 36 个认证 API(含 Beta)，本站追踪 22 个(20 Stable / 2 Beta)，20 个已有商用部署",
     baseline: "GSMA Open Gateway + CAMARA + TM Forum",
     dataSources: {
       gsma: {name:"GSMA 官网",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
@@ -97,50 +97,53 @@ var APP_DATA = {
     "计费模式多样性。评估标准：按次/阶梯/套餐/批发分成/直销等模式覆盖度（5分=5种以上，3分=2-3种，1分=仅直销）",
     "开发者生态成熟度。评估标准：是否有开发者门户、SDK、沙箱测试、文档质量、开发者数量（5分=完整门户+850+开发者，3分=有门户但规模小，1分=无公开门户）"
   ],
-  // CAMARA API 清单
+  // CAMARA API 清单 (名称与 camaraproject.org 官方一致)
   camaraAPIs:[
-    {name:"Number Verification",desc:"验证手机号与设备 SIM 一致性(无 SMS OTP)",status:"Stable",version:"v2.1.0",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:35,camaraUrl:"https://github.com/camaraproject/NumberVerification/releases"},
-    {name:"SIM Swap",desc:"检测 SIM 卡近期是否被更换",status:"Stable",version:"v2.1.0",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:40,camaraUrl:"https://github.com/camaraproject/SimSwap/releases"},
+    {name:"Number Verification",desc:"验证手机号与设备 SIM 一致性(无 SMS OTP)",status:"Stable",version:"v2.1.0",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:35,camaraUrl:"https://camaraproject.org/number-verification/"},
+    {name:"Sim Swap",desc:"检测 SIM 卡近期是否被更换",status:"Stable",version:"v2.1.0",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:40,camaraUrl:"https://camaraproject.org/sim-swap/"},
     {name:"Device Status",desc:"设备在线/漫游/离线状态查询",status:"Stable",version:"v0.4.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:20,camaraUrl:"https://github.com/camaraproject/DeviceStatus"},
-    {name:"Device Roaming Status",desc:"设备漫游状态及所在国家",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:18,camaraUrl:"https://github.com/camaraproject/DeviceRoamingStatus"},
-    {name:"Device Reachability Status",desc:"设备是否可通过 SMS/数据到达",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:15,camaraUrl:"https://github.com/camaraproject/DeviceReachabilityStatus"},
-    {name:"Device Location Verification",desc:"设备位置验证(地理围栏)",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"位置服务",launchMarkets:12,camaraUrl:"https://github.com/camaraproject/DeviceLocationVerification"},
-    {name:"Quality on Demand (QoD)",desc:"按需请求网络质量保障(延迟/带宽)",status:"Stable",version:"v1.1.0",releaseTag:"r3.2",category:"网络质量",launchMarkets:8,camaraUrl:"https://github.com/camaraproject/QualityOnDemand/releases"},
-    {name:"Know Your Customer Match",desc:"KYC 身份信息匹配验证",status:"Stable",version:"v0.5.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:10,camaraUrl:"https://github.com/camaraproject/KnowYourCustomerMatch"},
-    {name:"KYC Age Verification",desc:"年龄验证(是否成年)",status:"Stable",version:"v0.5.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:8,camaraUrl:"https://github.com/camaraproject/KnowYourCustomerAgeVerification"},
-    {name:"One Time Password SMS",desc:"标准化 OTP 短信发送",status:"Stable",version:"v1.0.0",releaseTag:"r2.2",category:"认证与反欺诈",launchMarkets:25,camaraUrl:"https://github.com/camaraproject/OTPandSMSMessage"},
-    {name:"Carrier Billing",desc:"运营商计费/代扣费 API",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"计费与支付",launchMarkets:12,camaraUrl:"https://github.com/camaraproject/CarrierBilling"},
-    {name:"Call Forwarding Signal",desc:"呼叫转移状态检测(反欺诈)",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:6,camaraUrl:"https://github.com/camaraproject/CallForwardingSignal"},
-    {name:"Device Swap",desc:"检测设备是否被更换",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:10,camaraUrl:"https://github.com/camaraproject/DeviceSwap"},
-    {name:"Silent Authentication",desc:"无感网络认证(替代 SMS OTP)",status:"Stable",version:"v0.1.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:5,camaraUrl:"https://github.com/camaraproject/SilentAuthentication"},
-    {name:"Edge Discovery",desc:"边缘计算节点发现与路由",status:"Beta",version:"v0.1.x",releaseTag:"r3.2",category:"边缘计算",launchMarkets:3,camaraUrl:"https://github.com/camaraproject/EdgeCloud"},
-    {name:"Simple Edge Compute",desc:"简单边缘计算服务",status:"Beta",version:"v0.1.x",releaseTag:"r3.2",category:"边缘计算",launchMarkets:2,camaraUrl:"https://github.com/camaraproject/EdgeCloud"},
-    {name:"Device Density",desc:"设备密度查询(区域设备集中度)",status:"Beta",version:"v0.2.x",releaseTag:"r3.2",category:"位置服务",launchMarkets:2,camaraUrl:"https://github.com/camaraproject/PopulationDensityData"},
-    {name:"IoT SIM Fraud Prevention",desc:"物联网 SIM 卡防欺诈(中国电信贡献)",status:"Beta",version:"v0.1.x",releaseTag:"Beta",category:"物联网安全",launchMarkets:1,camaraUrl:"https://github.com/camaraproject/IoT-SIM-Fraud-Prevention"},
-    {name:"Quality of Service Booking",desc:"预约特定时间地点的网络质量保障",status:"Beta",version:"v0.1.x",releaseTag:"Beta",category:"网络质量",launchMarkets:1,camaraUrl:"https://github.com/camaraproject/QualityOnDemand"},
-    {name:"Blockchain Public Address",desc:"手机号关联区块链地址(DID)",status:"Beta",version:"v0.1.x",releaseTag:"Beta",category:"计费与支付",launchMarkets:1,camaraUrl:"https://github.com/camaraproject/BlockchainPublicAddress"}
+    {name:"Device Roaming Status",desc:"设备漫游状态及所在国家",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:18,camaraUrl:"https://camaraproject.org/device-roaming-status/"},
+    {name:"Device Reachability Status",desc:"设备是否可通过 SMS/数据到达",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:15,camaraUrl:"https://camaraproject.org/device-reachability-status/"},
+    {name:"Location Verification",desc:"设备位置验证(地理围栏)",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"位置服务",launchMarkets:12,camaraUrl:"https://camaraproject.org/location-verification/"},
+    {name:"Quality on Demand",desc:"按需请求网络质量保障(延迟/带宽)",status:"Stable",version:"v1.1.0",releaseTag:"r3.2",category:"网络质量",launchMarkets:8,camaraUrl:"https://camaraproject.org/quality-on-demand/"},
+    {name:"Know Your Customer Match",desc:"KYC 身份信息匹配验证",status:"Stable",version:"v0.5.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:10,camaraUrl:"https://camaraproject.org/know-your-customer-match/"},
+    {name:"Know Your Customer Age Verification",desc:"年龄验证(是否成年)",status:"Stable",version:"v0.5.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:8,camaraUrl:"https://camaraproject.org/know-your-customer-age-verification/"},
+    {name:"One Time Password SMS",desc:"标准化 OTP 短信发送",status:"Stable",version:"v1.0.0",releaseTag:"r2.2",category:"认证与反欺诈",launchMarkets:25,camaraUrl:"https://camaraproject.org/one-time-password-sms/"},
+    {name:"Carrier Billing",desc:"运营商计费/代扣费 API",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"计费与支付",launchMarkets:12,camaraUrl:"https://camaraproject.org/carrier-billing/"},
+    {name:"Call Forwarding Signal",desc:"呼叫转移状态检测(反欺诈)",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:6,camaraUrl:"https://camaraproject.org/call-forwarding-signal/"},
+    {name:"Device Swap",desc:"检测设备是否被更换",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:10,camaraUrl:"https://camaraproject.org/device-swap/"},
+    {name:"Silent Authentication",desc:"无感网络认证(替代 SMS OTP，Number Verification 的高级模式)",status:"Stable",version:"v0.1.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:5,camaraUrl:"https://github.com/camaraproject/SilentAuthentication"},
+    {name:"Simple Edge Discovery",desc:"边缘计算节点发现与路由",status:"Stable",version:"v0.1.x",releaseTag:"r3.2",category:"边缘计算",launchMarkets:3,camaraUrl:"https://camaraproject.org/simple-edge-discovery/"},
+    {name:"Population Density Data",desc:"区域人口密度估算数据",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"位置服务",launchMarkets:2,camaraUrl:"https://camaraproject.org/population-density-data/"},
+    {name:"IoT SIM Fraud Prevention",desc:"物联网 SIM 卡防欺诈(中国电信贡献)",status:"Beta",version:"v0.1.x",releaseTag:"Beta",category:"物联网安全",launchMarkets:1,camaraUrl:"https://camaraproject.org/iot-sim-fraud-prevention/"},
+    {name:"QoS Booking",desc:"预约特定时间地点的网络质量保障",status:"Beta",version:"v0.1.x",releaseTag:"Beta",category:"网络质量",launchMarkets:1,camaraUrl:"https://camaraproject.org/qos-booking/"},
+    {name:"Blockchain Public Address",desc:"手机号关联区块链地址(DID)",status:"Stable",version:"v0.1.x",releaseTag:"r3.2",category:"计费与支付",launchMarkets:1,camaraUrl:"https://camaraproject.org/blockchain-public-address/"},
+    {name:"Scam Signal",desc:"通话欺诈信号检测(英国银行业反欺诈)",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:1,camaraUrl:"https://camaraproject.org/scam-signal/"},
+    {name:"Number Recycling",desc:"手机号是否被回收重新分配",status:"Stable",version:"v0.1.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:2,camaraUrl:"https://camaraproject.org/number-recycling/"},
+    {name:"Location Retrieval",desc:"设备地理位置获取(基于网络数据)",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"位置服务",launchMarkets:5,camaraUrl:"https://camaraproject.org/location-retrieval/"}
   ],
   apiCategories:["认证与反欺诈","设备信息","位置服务","网络质量","计费与支付","边缘计算","物联网安全"],
   // 热力矩阵: 运营商 x API 能力
-  capabilities:["Number Verify","SIM Swap","Device Status","Roaming Status","Reachability","Location Verify","QoD","KYC Match","KYC Age","OTP SMS","Carrier Billing","Call Forwarding","Device Swap","Silent Auth","Edge Discovery","IoT SIM Anti-Fraud"],
+  capabilities:["Number Verify","Sim Swap","Device Status","Roaming Status","Reachability","Location Verify","QoD","KYC Match","KYC Age","OTP SMS","Carrier Billing","Call Forwarding","Device Swap","Silent Auth","Edge Discovery","Population Density","IoT SIM Anti-Fraud","QoS Booking","Blockchain Address","Scam Signal","Number Recycling","Location Retrieval"],
+  // 值: 2=已商用  1=试点/部分支持  0=未部署
   heatmap:[
-    [2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,0], // Telefónica
-    [2,2,2,2,2,1,2,1,1,2,2,1,2,1,1,0], // Vodafone
-    [2,2,2,2,2,2,2,2,2,2,1,2,2,2,2,0], // Orange
-    [2,2,2,2,1,2,2,1,1,2,1,1,2,1,1,0], // Deutsche Telekom
-    [2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2], // 中国联通
-    [2,2,1,1,1,1,2,1,1,2,2,0,1,1,0,1], // 中国移动
-    [2,2,2,2,2,1,2,1,1,2,1,1,2,1,0,2], // 中国电信
-    [2,2,0,0,0,2,2,0,0,2,0,0,0,0,0,0], // CITIC Telecom
-    [2,2,2,1,1,1,1,1,0,2,1,0,1,1,0,0], // Verizon
-    [2,2,2,1,1,1,1,1,0,2,1,0,1,1,0,0], // AT&T
-    [2,2,1,1,1,1,1,0,0,2,0,0,1,1,0,0], // T-Mobile US
-    [2,2,2,1,1,1,1,1,1,2,1,0,1,1,0,0], // NTT Docomo
-    [2,2,1,1,1,1,1,0,0,2,1,0,1,1,1,0], // SK Telecom
-    [2,2,1,1,1,0,0,1,0,2,1,0,1,1,0,0], // Reliance Jio
-    [2,2,1,1,1,0,0,1,0,2,1,0,1,1,0,0], // Bharti Airtel
-    [2,2,2,2,2,1,2,1,1,2,1,1,2,1,1,0], // MasOrange
-    [2,2,1,1,1,1,0,0,0,2,0,0,1,0,0,0]  // Claro
+    [2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,0,0,1,1,1,1], // Telefónica
+    [2,2,2,2,2,2,2,1,1,2,2,1,2,1,1,0,0,0,0,1,0,1], // Vodafone
+    [2,2,2,2,2,2,2,2,2,2,1,2,2,1,1,0,0,0,0,0,0,1], // Orange
+    [2,2,2,2,1,2,2,1,1,2,1,1,2,1,1,0,0,0,0,0,0,0], // Deutsche Telekom
+    [2,2,1,1,1,1,2,1,1,2,2,0,1,1,0,0,1,1,0,0,0,0], // 中国联通
+    [2,2,1,1,1,1,2,1,1,2,2,0,1,1,0,0,1,0,0,0,0,0], // 中国移动
+    [2,2,1,1,1,2,2,1,1,2,1,0,1,1,0,1,2,1,0,0,0,0], // 中国电信
+    [2,1,0,0,0,1,1,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0], // CITIC Telecom (NaaS聚合，部分能力依赖合作运营商)
+    [2,2,2,1,1,1,1,1,0,2,1,0,1,1,0,0,0,0,0,0,0,0], // Verizon
+    [2,2,2,1,1,1,1,1,0,2,1,0,1,1,0,0,0,0,0,0,0,0], // AT&T
+    [2,2,1,1,1,1,1,0,0,2,0,0,1,1,0,0,0,0,0,0,0,0], // T-Mobile US
+    [2,2,2,1,1,1,1,1,1,2,1,0,1,1,0,0,0,0,0,0,0,0], // NTT Docomo
+    [2,2,1,1,1,1,1,0,0,2,1,0,1,1,1,0,0,0,0,0,0,0], // SK Telecom
+    [2,2,1,1,1,0,0,1,0,2,1,0,1,1,0,0,0,0,0,0,0,0], // Reliance Jio
+    [2,2,1,1,1,0,0,1,0,2,1,0,1,1,0,0,0,0,0,0,0,0], // Bharti Airtel
+    [2,2,2,2,2,1,2,1,1,2,1,1,2,1,1,0,0,0,0,0,0,1], // MasOrange
+    [2,2,1,1,1,1,0,0,0,2,0,0,1,0,0,0,0,0,0,0,0,0]  // Claro
   ],
   radarDims:["API上线数","品类覆盖","商用进展","安全合规","计费灵活","开发者生态","生态合作","开发者体验"],
   radarData:[
@@ -178,7 +181,7 @@ var APP_DATA = {
       {metric:"运营商集团",value:"86",unit:"家",note:"覆盖全球 80% 移动连接",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/",updateTime:"2026-08-26"},
       {metric:"移动网络",value:"300+",unit:"个",note:"全球范围",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/",updateTime:"2026-08-26"},
       {metric:"渠道合作伙伴",value:"77",unit:"家",note:"云厂商/CPaaS/设备商/安全厂商",sourceUrl:"https://www.linkedin.com/posts/matteo-di-battista-75584b15b_networkapis-opengateway-fraudprevention-activity-7491400899257556994-uoZW",updateTime:"2026-08-25"},
-      {metric:"CAMARA 认证 API",value:"33",unit:"个",note:"另有 40+ 开发中",sourceUrl:"https://camaraproject.org/",updateTime:"2026-08-26"},
+      {metric:"CAMARA 认证 API",value:"36",unit:"个",note:"含 Beta；本站追踪 22 个核心 API(20 Stable / 2 Beta)，20 个已有商用部署",sourceUrl:"https://camaraproject.org/",updateTime:"2026-08-26"},
       {metric:"商用 API 实例",value:"300+",unit:"个",note:"跨 85 个网络",sourceUrl:"https://5gworldpro.com/blog/2026/08/14/network-apis-and-camara-why-telecoms-api-monetization-push-is-finally-working-in-2026/",updateTime:"2026-08-14"},
       {metric:"商用市场",value:"65",unit:"个",note:"27 个市场已 100% API 对齐",sourceUrl:"https://5gworldpro.com/blog/2026/08/14/network-apis-and-camara-why-telecoms-api-monetization-push-is-finally-working-in-2026/",updateTime:"2026-08-14"}
     ],
@@ -256,7 +259,7 @@ var APP_DATA = {
     {period:"2025-03",operators:"61",markets:"25",apis:"18",note:"中国信通院正式加入 GSMA Open Gateway",source:"百度百科"},
     {period:"2025-09",operators:"72",markets:"40",apis:"25",note:"马来西亚运营商签署 MOU 联合部署",source:"U2opia"},
     {period:"2026-03",operators:"80",markets:"55",apis:"30",note:"MWC26: Twilio 日处理 3080 万笔交易",source:"5GWorldPro"},
-    {period:"2026-08",operators:"86",markets:"65",apis:"33",note:"300+ 商用实例，77 家渠道合作伙伴",source:"GSMA/CAMARA"}
+    {period:"2026-08",operators:"86",markets:"65",apis:"36",note:"300+ 商用实例，77 家渠道合作伙伴，36 个 CAMARA 认证 API",source:"GSMA/CAMARA"}
   ],
   // M6: 商用案例与试商用案例
   commercialCases:[

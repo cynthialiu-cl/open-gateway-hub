@@ -119,9 +119,20 @@ function renderHeatmap() {
   var ops = D.operators;
   var caps = D.capabilities;
   var matrix = D.heatmap;
+  // 表头缩写映射，title 保留全名
+  var shortNames = {
+    "Number Verify":"Num Verify","Sim Swap":"Sim Swap","Device Status":"Dev Status",
+    "Roaming Status":"Roaming","Reachability":"Reach","Location Verify":"Loc Verify",
+    "QoD":"QoD","KYC Match":"KYC Match","KYC Age":"KYC Age","OTP SMS":"OTP SMS",
+    "Carrier Billing":"Carrier Bill","Call Forwarding":"Call Fwd","Device Swap":"Dev Swap",
+    "Silent Auth":"Silent Auth","Edge Discovery":"Edge Disc","Population Density":"Pop Density",
+    "IoT SIM Anti-Fraud":"IoT Anti-Fraud","QoS Booking":"QoS Book","Blockchain Address":"Blockchain",
+    "Scam Signal":"Scam Sig","Number Recycling":"Num Recycle","Location Retrieval":"Loc Retrieve"
+  };
   var html = '<div class="tbl-wrap"><table class="heat-table"><thead><tr><th>运营商</th>';
   caps.forEach(function(c) {
-    html += '<th title="' + esc(c) + '">' + esc(c) + '</th>';
+    var short = shortNames[c] || c;
+    html += '<th title="' + esc(c) + '">' + esc(short) + '</th>';
   });
   html += '</tr></thead><tbody>';
   ops.forEach(function(op, i) {
@@ -130,12 +141,14 @@ function renderHeatmap() {
       matrix[i].forEach(function(val) {
         var cls = val === 2 ? 'heat-2' : val === 1 ? 'heat-1' : 'heat-0';
         var sym = val === 2 ? '●' : val === 1 ? '◐' : '○';
-        html += '<td class="' + cls + '">' + sym + '</td>';
+        html += '<td class="' + cls + '" title="' + (val===2?'已商用':val===1?'试点/部分支持':'未部署') + '">' + sym + '</td>';
       });
     }
     html += '</tr>';
   });
   html += '</tbody></table></div>';
+  // 图例
+  html += '<div style="margin-top:8px;font-size:12px;color:var(--tx2)"><span class="heat-2" style="padding:2px 8px;border-radius:3px">● 已商用</span> <span class="heat-1" style="padding:2px 8px;border-radius:3px;margin-left:8px">◐ 试点/部分支持</span> <span class="heat-0" style="padding:2px 8px;border-radius:3px;margin-left:8px">○ 未部署</span></div>';
   document.getElementById('heatmapContainer').innerHTML = html;
 }
 
