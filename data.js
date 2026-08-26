@@ -124,7 +124,7 @@ var APP_DATA = {
   ],
   apiCategories:["认证与反欺诈","设备信息","位置服务","网络质量","计费与支付","边缘计算","物联网安全"],
   // 热力矩阵: 运营商 x API 能力
-  capabilities:["Number Verify","Sim Swap","Device Status","Roaming Status","Reachability","Location Verify","QoD","KYC Match","KYC Age","OTP SMS","Carrier Billing","Call Forwarding","Device Swap","Silent Auth","Edge Discovery","Population Density","IoT SIM Anti-Fraud","QoS Booking","Blockchain Address","Scam Signal","Number Recycling","Location Retrieval"],
+  capabilities:["Number Verification","Sim Swap","Device Status","Device Roaming Status","Device Reachability Status","Location Verification","Quality on Demand","Know Your Customer Match","Know Your Customer Age Verification","One Time Password SMS","Carrier Billing","Call Forwarding Signal","Device Swap","Silent Authentication","Simple Edge Discovery","Population Density Data","IoT SIM Fraud Prevention","QoS Booking","Blockchain Public Address","Scam Signal","Number Recycling","Location Retrieval"],
   // 值: 2=已商用  1=试点/部分支持  0=未部署
   heatmap:[
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,1,0,0,1,1,1,1], // Telefónica

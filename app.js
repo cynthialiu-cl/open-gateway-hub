@@ -119,20 +119,9 @@ function renderHeatmap() {
   var ops = D.operators;
   var caps = D.capabilities;
   var matrix = D.heatmap;
-  // 表头缩写映射，title 保留全名
-  var shortNames = {
-    "Number Verify":"Num Verify","Sim Swap":"Sim Swap","Device Status":"Dev Status",
-    "Roaming Status":"Roaming","Reachability":"Reach","Location Verify":"Loc Verify",
-    "QoD":"QoD","KYC Match":"KYC Match","KYC Age":"KYC Age","OTP SMS":"OTP SMS",
-    "Carrier Billing":"Carrier Bill","Call Forwarding":"Call Fwd","Device Swap":"Dev Swap",
-    "Silent Auth":"Silent Auth","Edge Discovery":"Edge Disc","Population Density":"Pop Density",
-    "IoT SIM Anti-Fraud":"IoT Anti-Fraud","QoS Booking":"QoS Book","Blockchain Address":"Blockchain",
-    "Scam Signal":"Scam Sig","Number Recycling":"Num Recycle","Location Retrieval":"Loc Retrieve"
-  };
   var html = '<div class="tbl-wrap"><table class="heat-table"><thead><tr><th>运营商</th>';
   caps.forEach(function(c) {
-    var short = shortNames[c] || c;
-    html += '<th title="' + esc(c) + '">' + esc(short) + '</th>';
+    html += '<th title="' + esc(c) + '">' + esc(c) + '</th>';
   });
   html += '</tr></thead><tbody>';
   ops.forEach(function(op, i) {
