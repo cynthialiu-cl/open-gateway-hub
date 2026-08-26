@@ -190,6 +190,25 @@ function renderChannelPartners() {
   document.getElementById('channelPartners').innerHTML = html;
 }
 
+// ===== M2: 运营商开发者门户 =====
+function renderOperatorDevPortals() {
+  var html = '<div class="tbl-wrap"><table><thead><tr>' +
+    '<th>运营商</th><th>国家/地区</th><th>类型</th><th>开发者门户</th>' +
+    '</tr></thead><tbody>';
+  D.operators.forEach(function(op) {
+    var citic = op.name === 'CITIC Telecom';
+    html += '<tr>' +
+      '<td style="font-weight:600' + (citic ? ';color:var(--accent2)' : '') + '">' + esc(op.name) + (citic ? ' ★' : '') + '</td>' +
+      '<td>' + esc(op.country) + '</td>' +
+      '<td>' + esc(op.type) + '</td>' +
+      '<td><a href="' + esc(op.devPortal || '#') + '" target="_blank" style="font-size:12px">' + esc(op.devPortal || '未公开') + '</a></td>' +
+      '</tr>';
+  });
+  html += '</tbody></table></div>';
+  var el = document.getElementById('operatorDevPortals');
+  if (el) el.innerHTML = html;
+}
+
 // ===== M2: 雷达图 =====
 function generateRadarSVG(name, values, labels) {
   var cx = 150, cy = 150, r = 110;
@@ -885,6 +904,7 @@ function renderAll() {
   renderHeatmap();
   renderCamaraAPIs();
   renderChannelPartners();
+  renderOperatorDevPortals();
   renderRadar();
   renderMarketData();
   renderDiff();
