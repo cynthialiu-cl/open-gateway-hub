@@ -134,16 +134,18 @@ function renderHeatmap() {
 // ===== M2: CAMARA API 清单 =====
 function renderCamaraAPIs() {
   var html = '<div class="tbl-wrap"><table><thead><tr>' +
-    '<th>API 名称</th><th>说明</th><th>状态</th><th>分类</th><th>商用市场数</th>' +
+    '<th>API 名称</th><th>版本</th><th>说明</th><th>状态</th><th>分类</th><th>商用市场</th><th>CAMARA</th>' +
     '</tr></thead><tbody>';
   D.camaraAPIs.forEach(function(api) {
     var statusClass = api.status === 'Stable' ? 'green-cell' : 'yellow-cell';
     html += '<tr>' +
       '<td style="font-weight:600">' + esc(api.name) + '</td>' +
-      '<td style="white-space:normal;max-width:300px">' + esc(api.desc) + '</td>' +
+      '<td class="c" style="font-weight:600;color:var(--accent2)">' + esc(api.version || '-') + '</td>' +
+      '<td style="white-space:normal;max-width:220px">' + esc(api.desc) + '</td>' +
       '<td class="' + statusClass + '">' + esc(api.status) + '</td>' +
       '<td>' + esc(api.category) + '</td>' +
       '<td class="c">' + api.launchMarkets + '</td>' +
+      '<td><a href="' + esc(api.camaraUrl || '#') + '" target="_blank" style="font-size:12px">' + esc(api.releaseTag || '查看') + '</a></td>' +
       '</tr>';
   });
   html += '</tbody></table></div>';
@@ -153,13 +155,14 @@ function renderCamaraAPIs() {
 // ===== M2: 渠道合作伙伴 =====
 function renderChannelPartners() {
   var html = '<div class="tbl-wrap"><table><thead><tr>' +
-    '<th>合作伙伴</th><th>类型</th><th>支持 API</th>' +
+    '<th>合作伙伴</th><th>类型</th><th>支持 API</th><th>开发者门户</th>' +
     '</tr></thead><tbody>';
   D.channelPartners.forEach(function(p) {
     html += '<tr>' +
-      '<td style="font-weight:600">' + esc(p.name) + '</td>' +
+      '<td style="font-weight:600' + (p.name === 'CITIC Telecom' ? ';color:var(--accent2)' : '') + '">' + esc(p.name) + (p.name === 'CITIC Telecom' ? ' ★' : '') + '</td>' +
       '<td>' + esc(p.type) + '</td>' +
       '<td style="white-space:normal">' + esc(p.apis) + '</td>' +
+      '<td><a href="' + esc(p.devPortal || '#') + '" target="_blank" style="font-size:12px">访问门户</a></td>' +
       '</tr>';
   });
   html += '</tbody></table></div>';
@@ -394,10 +397,14 @@ function renderBilling() {
 
 // ===== M5: 架构图 =====
 function renderArchitecture() {
-  var html = '<div class="arch-stack">';
+  var html = '';
+  if (D.architectureSource) {
+    html += '<div style="margin-bottom:14px;padding:10px 14px;background:rgba(13,115,119,.05);border:1px solid rgba(13,115,119,.12);border-radius:var(--radius-sm);font-size:12px;color:var(--tx2)"><strong style="color:var(--accent)">架构来源:</strong> ' + esc(D.architectureSource) + '</div>';
+  }
+  html += '<div class="arch-stack">';
   D.architecture.forEach(function(a, i) {
     var vendorTags = (a.vendors || []).map(function(v) {
-      return '<span class="vendor-tag">' + esc(v) + '</span>';
+      return '<span class="vendor-tag' + (v.indexOf('CITIC') >= 0 ? ' citic' : '') + '">' + esc(v) + '</span>';
     }).join('');
     html += '<div class="arch-layer">' +
       '<div class="layer-num">' + (i + 1) + '</div>' +
@@ -495,8 +502,11 @@ function renderAppScenarios() {
       '<div class="scenario-header">' +
         '<span class="scenario-icon">' + icon + '</span>' +
         '<span class="scenario-industry">' + esc(s.industry) + '</span>' +
-      '</div>' +
-      '<div class="scenario-list">';
+      '</div>';
+    if (s.sourceUrl) {
+      html += '<div class="scenario-source"><a href="' + esc(s.sourceUrl) + '" target="_blank">来源: ' + esc(s.sourceName || '点击查看') + '</a></div>';
+    }
+    html += '<div class="scenario-list">';
     (s.scenarios || []).forEach(function(sc) {
       var apiTags = (sc.apis || []).map(function(a) {
         return '<span class="case-api-tag sm">' + esc(a) + '</span>';
@@ -506,6 +516,7 @@ function renderAppScenarios() {
         '<div class="scenario-need">' + esc(sc.need) + '</div>' +
         '<div class="scenario-apis">' + apiTags + '</div>' +
         '<div class="scenario-desc">' + esc(sc.desc) + '</div>' +
+        (sc.sourceUrl ? '<div class="scenario-item-source"><a href="' + esc(sc.sourceUrl) + '" target="_blank">参考来源</a></div>' : '') +
         '</div>';
     });
     html += '</div></div>';
@@ -525,7 +536,7 @@ function renderRegulatory() {
         '<span class="reg-country">' + esc(r.country) + '</span>' +
       '</div>' +
       '<div class="reg-policy">' + esc(r.policyName) + '</div>' +
-      '<div class="reg-dates"><span>发布: ' + esc(r.date) + '</span><span>生效: ' + esc(r.effectiveDate) + '</span></div>' +
+      '<div class="reg-dates"><span>政策发布: ' + esc(r.date) + '</span>' + (r.newsDate ? '<span style="color:var(--accent2)">新闻: ' + esc(r.newsDate) + '</span>' : '') + '<span>生效: ' + esc(r.effectiveDate) + '</span></div>' +
       '<div class="reg-summary">' + esc(r.summary) + '</div>' +
       '<div class="reg-impact"><span class="reg-label">影响</span>' + esc(r.impact) + '</div>' +
       '<div class="reg-source"><a href="' + esc(r.sourceUrl) + '" target="_blank">' + esc(r.source) + '</a></div>' +

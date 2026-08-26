@@ -122,6 +122,11 @@ table .c{text-align:center}
 .arch-layer .layer-desc{font-size:12px;color:var(--tx3);margin-top:2px}
 .arch-layer .layer-vendors{display:flex;gap:5px;flex-wrap:wrap}
 .arch-layer .vendor-tag{font-size:11px;background:var(--bg3);border:1px solid var(--bd2);padding:3px 10px;border-radius:4px;color:var(--tx2)}
+.vendor-tag.citic{background:rgba(193,120,23,.1);border-color:rgba(193,120,23,.2);color:var(--accent2);font-weight:600}
+.scenario-source{margin-bottom:8px;font-size:11px}
+.scenario-source a{color:var(--accent)}
+.scenario-item-source{margin-top:4px;font-size:11px}
+.scenario-item-source a{color:var(--accent2)}
 
 .diff-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
 .diff-card{background:var(--bg2);border:1px solid var(--bd);border-radius:var(--radius-sm);padding:14px 18px;box-shadow:var(--shadow-card);transition:box-shadow .2s,transform .15s}

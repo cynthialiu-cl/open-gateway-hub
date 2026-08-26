@@ -61,47 +61,48 @@ var APP_DATA = {
   newsSources:["GSMA 官网/新闻","CAMARA GitHub/Linux Foundation","行业媒体(5GWorldPro/Asia Tech Journal/Computer Weekly)","运营商官网/新闻中心","财经产业媒体","政府监管机构","研报智库(麦肯锡/GSMA)","微信公众号","MWC 大会公告","Pyxis.tech","EIN Presswire","Briefpedia","中国工信新闻网","APIs.io","LinkedIn"],
   // M2: 运营商能力对标
   operators:[
-    {name:"Telefónica",country:"西班牙",region:"欧洲",type:"跨国运营商",score:9.0,dims:[5,5,5,5,4,5]},
-    {name:"Vodafone Group",country:"英国",region:"欧洲",type:"跨国运营商",score:8.8,dims:[5,4,5,5,4,5]},
-    {name:"Orange Group",country:"法国",region:"欧洲",type:"跨国运营商",score:8.6,dims:[5,4,4,5,4,5]},
-    {name:"Deutsche Telekom",country:"德国",region:"欧洲",type:"跨国运营商",score:8.5,dims:[4,4,4,5,4,5]},
-    {name:"中国联通",country:"中国",region:"中国内地",type:"国有运营商",score:8.6,dims:[4,5,4,5,5,4]},
-    {name:"中国移动",country:"中国",region:"中国内地",type:"国有运营商",score:8.4,dims:[4,5,4,4,5,4]},
-    {name:"中国电信",country:"中国",region:"中国内地",type:"国有运营商",score:8.5,dims:[5,5,4,4,4,4]},
-    {name:"Verizon",country:"美国",region:"北美洲",type:"商业运营商",score:8.0,dims:[4,3,4,4,3,5]},
-    {name:"AT&T",country:"美国",region:"北美洲",type:"商业运营商",score:7.8,dims:[4,3,4,4,3,5]},
-    {name:"T-Mobile US",country:"美国",region:"北美洲",type:"商业运营商",score:7.6,dims:[4,3,3,4,3,5]},
-    {name:"NTT Docomo",country:"日本",region:"亚洲",type:"商业运营商",score:7.8,dims:[4,3,4,4,3,4]},
-    {name:"SK Telecom",country:"韩国",region:"亚洲",type:"商业运营商",score:7.6,dims:[4,3,3,4,3,4]},
-    {name:"Reliance Jio",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,4]},
-    {name:"Bharti Airtel",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,4]},
-    {name:"MasOrange",country:"西班牙",region:"欧洲",type:"商业运营商",score:7.6,dims:[4,3,4,4,3,4]},
-    {name:"Claro",country:"拉美多国",region:"拉美",type:"跨国运营商",score:7.2,dims:[3,3,3,4,3,4]}
+    {name:"Telefónica",country:"西班牙",region:"欧洲",type:"跨国运营商",score:9.0,dims:[5,5,5,5,4,5],devPortal:"https://developers.opengateway.telefonica.com/"},
+    {name:"Vodafone Group",country:"英国",region:"欧洲",type:"跨国运营商",score:8.8,dims:[5,4,5,5,4,5],devPortal:"https://developer.vodafone.com"},
+    {name:"Orange Group",country:"法国",region:"欧洲",type:"跨国运营商",score:8.6,dims:[5,4,4,5,4,5],devPortal:"https://developer.orange.com/"},
+    {name:"Deutsche Telekom",country:"德国",region:"欧洲",type:"跨国运营商",score:8.5,dims:[4,4,4,5,4,4],devPortal:"https://developer.telekom.com/en"},
+    {name:"中国联通",country:"中国",region:"中国内地",type:"国有运营商",score:8.6,dims:[4,5,4,5,5,3],devPortal:"https://open.10010.com/"},
+    {name:"中国移动",country:"中国",region:"中国内地",type:"国有运营商",score:8.4,dims:[4,5,4,4,5,3],devPortal:"https://open.10086.cn/"},
+    {name:"中国电信",country:"中国",region:"中国内地",type:"国有运营商",score:8.5,dims:[5,5,4,4,4,3],devPortal:"https://open.189.cn/"},
+    {name:"CITIC Telecom",country:"中国香港",region:"中国内地",type:"跨国运营商",score:7.8,dims:[3,3,4,4,4,3],devPortal:"https://www.citictel.com/"},
+    {name:"Verizon",country:"美国",region:"北美洲",type:"商业运营商",score:8.0,dims:[4,3,4,4,3,4],devPortal:"https://www.verizon.com/business/"},
+    {name:"AT&T",country:"美国",region:"北美洲",type:"商业运营商",score:7.8,dims:[4,3,4,4,3,4],devPortal:"https://developer.att.com/"},
+    {name:"T-Mobile US",country:"美国",region:"北美洲",type:"商业运营商",score:7.6,dims:[4,3,3,4,3,4],devPortal:"https://developer.t-mobile.com/"},
+    {name:"NTT Docomo",country:"日本",region:"亚洲",type:"商业运营商",score:7.8,dims:[4,3,4,4,3,3],devPortal:"https://dev.smt.docomone.jp/"},
+    {name:"SK Telecom",country:"韩国",region:"亚洲",type:"商业运营商",score:7.6,dims:[4,3,3,4,3,3],devPortal:"https://www.sktelecom.com/"},
+    {name:"Reliance Jio",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,3],devPortal:"https://www.jio.com/"},
+    {name:"Bharti Airtel",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,3],devPortal:"https://www.airtel.in/"},
+    {name:"MasOrange",country:"西班牙",region:"欧洲",type:"商业运营商",score:7.6,dims:[4,3,4,4,3,3],devPortal:"https://www.masorange.com/"},
+    {name:"Claro",country:"拉美多国",region:"拉美",type:"跨国运营商",score:7.2,dims:[3,3,3,4,3,3],devPortal:"https://www.claro.com.br/"}
   ],
-  dimLabels:["API 上线数","API 品类覆盖","商用化进展","安全合规","计费灵活","SLA 保障"],
+  dimLabels:["API 上线数","API 品类覆盖","商用化进展","安全合规","计费灵活","开发者生态"],
   dimWeights:["25%","20%","20%","12%","13%","10%"],
   // CAMARA API 清单
   camaraAPIs:[
-    {name:"Number Verification",desc:"验证手机号与设备 SIM 一致性(无 SMS OTP)",status:"Stable",category:"认证与反欺诈",launchMarkets:35},
-    {name:"SIM Swap",desc:"检测 SIM 卡近期是否被更换",status:"Stable",category:"认证与反欺诈",launchMarkets:40},
-    {name:"Device Status",desc:"设备在线/漫游/离线状态查询",status:"Stable",category:"设备信息",launchMarkets:20},
-    {name:"Device Roaming Status",desc:"设备漫游状态及所在国家",status:"Stable",category:"设备信息",launchMarkets:18},
-    {name:"Device Reachability Status",desc:"设备是否可通过 SMS/数据到达",status:"Stable",category:"设备信息",launchMarkets:15},
-    {name:"Device Location Verification",desc:"设备位置验证(地理围栏)",status:"Stable",category:"位置服务",launchMarkets:12},
-    {name:"Quality on Demand (QoD)",desc:"按需请求网络质量保障(延迟/带宽)",status:"Stable",category:"网络质量",launchMarkets:8},
-    {name:"Know Your Customer Match",desc:"KYC 身份信息匹配验证",status:"Stable",category:"认证与反欺诈",launchMarkets:10},
-    {name:"KYC Age Verification",desc:"年龄验证(是否成年)",status:"Stable",category:"认证与反欺诈",launchMarkets:8},
-    {name:"One Time Password SMS",desc:"标准化 OTP 短信发送",status:"Stable",category:"认证与反欺诈",launchMarkets:25},
-    {name:"Carrier Billing",desc:"运营商计费/代扣费 API",status:"Stable",category:"计费与支付",launchMarkets:12},
-    {name:"Call Forwarding Signal",desc:"呼叫转移状态检测(反欺诈)",status:"Stable",category:"认证与反欺诈",launchMarkets:6},
-    {name:"Device Swap",desc:"检测设备是否被更换",status:"Stable",category:"设备信息",launchMarkets:10},
-    {name:"Silent Authentication",desc:"无感网络认证(替代 SMS OTP)",status:"Stable",category:"认证与反欺诈",launchMarkets:5},
-    {name:"Edge Discovery",desc:"边缘计算节点发现与路由",status:"Beta",category:"边缘计算",launchMarkets:3},
-    {name:"Simple Edge Compute",desc:"简单边缘计算服务",status:"Beta",category:"边缘计算",launchMarkets:2},
-    {name:"Device Density",desc:"设备密度查询(区域设备集中度)",status:"Beta",category:"位置服务",launchMarkets:2},
-    {name:"IoT SIM Fraud Prevention",desc:"物联网 SIM 卡防欺诈(中国电信贡献)",status:"Beta",category:"物联网安全",launchMarkets:1},
-    {name:"Quality of Service Booking",desc:"预约特定时间地点的网络质量保障",status:"Beta",category:"网络质量",launchMarkets:1},
-    {name:"Blockchain Public Address",desc:"手机号关联区块链地址(DID)",status:"Beta",category:"计费与支付",launchMarkets:1}
+    {name:"Number Verification",desc:"验证手机号与设备 SIM 一致性(无 SMS OTP)",status:"Stable",version:"v2.1.0",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:35,camaraUrl:"https://github.com/camaraproject/NumberVerification/releases"},
+    {name:"SIM Swap",desc:"检测 SIM 卡近期是否被更换",status:"Stable",version:"v2.1.0",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:40,camaraUrl:"https://github.com/camaraproject/SimSwap/releases"},
+    {name:"Device Status",desc:"设备在线/漫游/离线状态查询",status:"Stable",version:"v0.4.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:20,camaraUrl:"https://github.com/camaraproject/DeviceStatus"},
+    {name:"Device Roaming Status",desc:"设备漫游状态及所在国家",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:18,camaraUrl:"https://github.com/camaraproject/DeviceRoamingStatus"},
+    {name:"Device Reachability Status",desc:"设备是否可通过 SMS/数据到达",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:15,camaraUrl:"https://github.com/camaraproject/DeviceReachabilityStatus"},
+    {name:"Device Location Verification",desc:"设备位置验证(地理围栏)",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"位置服务",launchMarkets:12,camaraUrl:"https://github.com/camaraproject/DeviceLocationVerification"},
+    {name:"Quality on Demand (QoD)",desc:"按需请求网络质量保障(延迟/带宽)",status:"Stable",version:"v1.1.0",releaseTag:"r3.2",category:"网络质量",launchMarkets:8,camaraUrl:"https://github.com/camaraproject/QualityOnDemand/releases"},
+    {name:"Know Your Customer Match",desc:"KYC 身份信息匹配验证",status:"Stable",version:"v0.5.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:10,camaraUrl:"https://github.com/camaraproject/KnowYourCustomerMatch"},
+    {name:"KYC Age Verification",desc:"年龄验证(是否成年)",status:"Stable",version:"v0.5.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:8,camaraUrl:"https://github.com/camaraproject/KnowYourCustomerAgeVerification"},
+    {name:"One Time Password SMS",desc:"标准化 OTP 短信发送",status:"Stable",version:"v1.0.0",releaseTag:"r2.2",category:"认证与反欺诈",launchMarkets:25,camaraUrl:"https://github.com/camaraproject/OTPandSMSMessage"},
+    {name:"Carrier Billing",desc:"运营商计费/代扣费 API",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"计费与支付",launchMarkets:12,camaraUrl:"https://github.com/camaraproject/CarrierBilling"},
+    {name:"Call Forwarding Signal",desc:"呼叫转移状态检测(反欺诈)",status:"Stable",version:"v0.2.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:6,camaraUrl:"https://github.com/camaraproject/CallForwardingSignal"},
+    {name:"Device Swap",desc:"检测设备是否被更换",status:"Stable",version:"v0.3.x",releaseTag:"r3.2",category:"设备信息",launchMarkets:10,camaraUrl:"https://github.com/camaraproject/DeviceSwap"},
+    {name:"Silent Authentication",desc:"无感网络认证(替代 SMS OTP)",status:"Stable",version:"v0.1.x",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:5,camaraUrl:"https://github.com/camaraproject/SilentAuthentication"},
+    {name:"Edge Discovery",desc:"边缘计算节点发现与路由",status:"Beta",version:"v0.1.x",releaseTag:"r3.2",category:"边缘计算",launchMarkets:3,camaraUrl:"https://github.com/camaraproject/EdgeCloud"},
+    {name:"Simple Edge Compute",desc:"简单边缘计算服务",status:"Beta",version:"v0.1.x",releaseTag:"r3.2",category:"边缘计算",launchMarkets:2,camaraUrl:"https://github.com/camaraproject/EdgeCloud"},
+    {name:"Device Density",desc:"设备密度查询(区域设备集中度)",status:"Beta",version:"v0.2.x",releaseTag:"r3.2",category:"位置服务",launchMarkets:2,camaraUrl:"https://github.com/camaraproject/PopulationDensityData"},
+    {name:"IoT SIM Fraud Prevention",desc:"物联网 SIM 卡防欺诈(中国电信贡献)",status:"Beta",version:"v0.1.x",releaseTag:"Beta",category:"物联网安全",launchMarkets:1,camaraUrl:"https://github.com/camaraproject/IoT-SIM-Fraud-Prevention"},
+    {name:"Quality of Service Booking",desc:"预约特定时间地点的网络质量保障",status:"Beta",version:"v0.1.x",releaseTag:"Beta",category:"网络质量",launchMarkets:1,camaraUrl:"https://github.com/camaraproject/QualityOnDemand"},
+    {name:"Blockchain Public Address",desc:"手机号关联区块链地址(DID)",status:"Beta",version:"v0.1.x",releaseTag:"Beta",category:"计费与支付",launchMarkets:1,camaraUrl:"https://github.com/camaraproject/BlockchainPublicAddress"}
   ],
   apiCategories:["认证与反欺诈","设备信息","位置服务","网络质量","计费与支付","边缘计算","物联网安全"],
   // 热力矩阵: 运营商 x API 能力
@@ -114,6 +115,7 @@ var APP_DATA = {
     [2,2,2,2,2,2,2,2,2,2,2,2,2,2,1,2], // 中国联通
     [2,2,1,1,1,1,2,1,1,2,2,0,1,1,0,1], // 中国移动
     [2,2,2,2,2,1,2,1,1,2,1,1,2,1,0,2], // 中国电信
+    [1,1,0,0,0,1,1,0,0,1,0,0,0,0,0,0], // CITIC Telecom
     [2,2,2,1,1,1,1,1,0,2,1,0,1,1,0,0], // Verizon
     [2,2,2,1,1,1,1,1,0,2,1,0,1,1,0,0], // AT&T
     [2,2,1,1,1,1,1,0,0,2,0,0,1,1,0,0], // T-Mobile US
@@ -124,32 +126,34 @@ var APP_DATA = {
     [2,2,2,2,2,1,2,1,1,2,1,1,2,1,1,0], // MasOrange
     [2,2,1,1,1,1,0,0,0,2,0,0,1,0,0,0]  // Claro
   ],
-  radarDims:["API上线数","品类覆盖","商用进展","安全合规","计费灵活","SLA保障","生态合作","开发者体验"],
+  radarDims:["API上线数","品类覆盖","商用进展","安全合规","计费灵活","开发者生态","生态合作","开发者体验"],
   radarData:[
-    {name:"Telefónica",values:[5,5,5,5,4,5,5,4]},
+    {name:"Telefónica",values:[5,5,5,5,4,5,5,5]},
     {name:"Orange",values:[5,4,4,5,4,5,5,4]},
-    {name:"中国联通",values:[4,5,4,5,5,4,4,3]},
-    {name:"中国电信",values:[5,5,4,4,4,4,4,3]},
+    {name:"中国联通",values:[4,5,4,5,5,3,4,3]},
+    {name:"中国电信",values:[5,5,4,4,4,3,4,3]},
+    {name:"CITIC Telecom",values:[3,3,4,4,4,3,3,2]},
     {name:"Vodafone",values:[5,4,5,5,4,5,4,4]},
-    {name:"Verizon",values:[4,3,4,4,3,5,3,3]}
+    {name:"Verizon",values:[4,3,4,4,3,4,3,3]}
   ],
   channelPartners:[
-    {name:"AWS",type:"云厂商/聚合",apis:"Number Verify, SIM Swap, QoD, Device Status"},
-    {name:"Google Cloud",type:"云厂商/聚合",apis:"Number Verify, SIM Swap, QoD"},
-    {name:"Microsoft Azure",type:"云厂商/聚合",apis:"Number Verify, SIM Swap"},
-    {name:"Twilio",type:"CPaaS",apis:"Number Verify, SIM Swap, OTP, Silent Auth"},
-    {name:"Vonage",type:"CPaaS",apis:"Number Verify, SIM Swap, QoD"},
-    {name:"Infobip",type:"CPaaS",apis:"Number Verify, SIM Swap, OTP"},
-    {name:"Sinch",type:"CPaaS",apis:"Number Verify, SIM Swap"},
-    {name:"Nokia",type:"设备商/平台",apis:"QoD, Device Status, Number Verify"},
-    {name:"Aduna",type:"聚合平台",apis:"Number Verify, SIM Swap, QoD, KYC"},
-    {name:"IBM Consulting",type:"集成商",apis:"全 API 集成咨询"},
-    {name:"Huawei",type:"设备商",apis:"QoD, Number Verify"},
-    {name:"ZTE",type:"设备商",apis:"QoD"},
-    {name:"Alibaba Cloud",type:"云厂商",apis:"Number Verify, SIM Swap"},
-    {name:"Meta",type:"技术伙伴",apis:"Number Verify"},
-    {name:"Oracle",type:"技术伙伴",apis:"Carrier Billing"},
-    {name:"BlackDice",type:"安全/反欺诈",apis:"AI 驱动网络级反欺诈安全能力"}
+    {name:"AWS",type:"云厂商/聚合",apis:"Number Verify, SIM Swap, QoD, Device Status",devPortal:"https://aws.amazon.com/marketplace"},
+    {name:"Google Cloud",type:"云厂商/聚合",apis:"Number Verify, SIM Swap, QoD",devPortal:"https://cloud.google.com/"},
+    {name:"Microsoft Azure",type:"云厂商/聚合",apis:"Number Verify, SIM Swap",devPortal:"https://azure.microsoft.com/"},
+    {name:"Twilio",type:"CPaaS",apis:"Number Verify, SIM Swap, OTP, Silent Auth",devPortal:"https://www.twilio.com/docs"},
+    {name:"Vonage",type:"CPaaS",apis:"Number Verify, SIM Swap, QoD",devPortal:"https://developer.vonage.com/"},
+    {name:"Infobip",type:"CPaaS",apis:"Number Verify, SIM Swap, OTP",devPortal:"https://www.infobip.com/docs"},
+    {name:"Sinch",type:"CPaaS",apis:"Number Verify, SIM Swap",devPortal:"https://developers.sinch.com/"},
+    {name:"Nokia",type:"设备商/平台",apis:"QoD, Device Status, Number Verify",devPortal:"https://www.nokia.com/"},
+    {name:"Aduna",type:"聚合平台",apis:"Number Verify, SIM Swap, QoD, KYC",devPortal:"https://aduna.global/"},
+    {name:"IBM Consulting",type:"集成商",apis:"全 API 集成咨询",devPortal:"https://www.ibm.com/consulting"},
+    {name:"Huawei",type:"设备商",apis:"QoD, Number Verify",devPortal:"https://developer.huawei.com/"},
+    {name:"ZTE",type:"设备商",apis:"QoD",devPortal:"https://www.zte.com.cn/"},
+    {name:"Alibaba Cloud",type:"云厂商",apis:"Number Verify, SIM Swap",devPortal:"https://www.alibabacloud.com/"},
+    {name:"Meta",type:"技术伙伴",apis:"Number Verify",devPortal:"https://developers.facebook.com/"},
+    {name:"Oracle",type:"技术伙伴",apis:"Carrier Billing",devPortal:"https://docs.oracle.com/"},
+    {name:"BlackDice",type:"安全/反欺诈",apis:"AI 驱动网络级反欺诈安全能力",devPortal:"https://www.blackdice.com/"},
+    {name:"CITIC Telecom",type:"NaaS/聚合",apis:"Number Verify, SIM Swap, QoD, Location, OTP",devPortal:"https://www.citictel.com/"}
   ],
   // 市场规模数据
   marketData:{
@@ -197,14 +201,15 @@ var APP_DATA = {
     {model:"套餐订阅",vendors:"Sinch, Infobip",desc:"月度/年度 API 套餐，含一定调用量"},
     {model:"运营商直销",vendors:"Telefónica, 中国联通",desc:"运营商直接向企业销售 API 服务"}
   ],
-  // 分层参考架构
+  // 分层参考架构 (来源: GSMA Open Gateway 白皮书 + CAMARA 架构规范 + TM Forum Open API 框架)
+  architectureSource:"本架构基于 GSMA Open Gateway 白皮书、CAMARA 项目架构规范及 TM Forum Open API 框架综合整理",
   architecture:[
-    {layer:"开发者接入层",desc:"API 门户、文档、SDK、沙箱测试",vendors:["GSMA","CAMARA","TM Forum"]},
-    {layer:"渠道聚合层",desc:"CPaaS/云厂商聚合多运营商 API，统一接口",vendors:["AWS","Twilio","Vonage","Infobip","Aduna"]},
-    {layer:"API 网关层",desc:"认证授权、限流、路由、计量",vendors:["Nokia","Telefónica","Orange"]},
+    {layer:"开发者接入层",desc:"API 门户、文档、SDK、沙箱测试",vendors:["GSMA","CAMARA","TM Forum","Telefónica Developer Hub"]},
+    {layer:"渠道聚合层",desc:"CPaaS/云厂商聚合多运营商 API，统一接口",vendors:["AWS","Twilio","Vonage","Infobip","Aduna","CITIC Telecom NaaS"]},
+    {layer:"API 网关层",desc:"认证授权、限流、路由、计量",vendors:["Nokia","Telefónica","Orange","华为"]},
     {layer:"能力编排层",desc:"API 组合、Agentic AI 编排、A2A 协议",vendors:["Telefónica","Nokia","Google Cloud","AWS"]},
-    {layer:"网络能力暴露层 (NEF)",desc:"5G 核心网 NEF 映射、CAMARA API 规范实现",vendors:["华为","中兴","Nokia"]},
-    {layer:"核心网/网络层",desc:"5G SA、EPC、IMS 等网络基础设施",vendors:["华为","中兴","Ericsson","Nokia"]},
+    {layer:"网络能力暴露层 (NEF)",desc:"5G 核心网 NEF 映射、CAMARA API 规范实现",vendors:["华为","中兴","Nokia","Ericsson"]},
+    {layer:"核心网/网络层",desc:"5G SA、EPC、IMS 等网络基础设施",vendors:["华为","中兴","Ericsson","Nokia","CITIC Telecom"]},
     {layer:"BSS/OSS 层",desc:"计费、配额、用户管理、运营支撑",vendors:["Amdocs","华为","亚信科技","新华三"]}
   ],
   // API 调用量排行
@@ -421,30 +426,37 @@ var APP_DATA = {
     {
       industry:"银行/金融",
       icon:"bank",
+      sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/",
+      sourceName:"GSMA / Telefónica 商用案例",
       scenarios:[
         {
           scene:"账户开户身份核验",
           need:"远程开户需验证用户身份真实性，防止虚假开户和身份冒用",
           apis:["KYC Match","Number Verification","SIM Swap"],
-          desc:"KYC Match 匹配姓名/身份证号，Number Verification 确认手机号真实，SIM Swap 检测近期换卡异常"
+          desc:"KYC Match 匹配姓名/身份证号，Number Verification 确认手机号真实，SIM Swap 检测近期换卡异常",
+          sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"
         },
         {
           scene:"交易反欺诈",
           need:"大额转账前确认用户设备未被劫持，防止账户接管欺诈",
           apis:["SIM Swap","Device Status","Scam Signal"],
-          desc:"SIM Swap 检测换卡，Device Status 确认设备在线，Scam Signal 分析通话是否涉诈"
+          desc:"SIM Swap 检测换卡，Device Status 确认设备在线，Scam Signal 分析通话是否涉诈",
+          sourceUrl:"https://www.linkedin.com/posts/matteo-di-battista-75584b15b_networkapis-opengateway-fraudprevention-activity-7491400899257556994-uoZW"
         },
         {
           scene:"无感登录认证",
           need:"替代 SMS OTP，提升登录体验同时增强安全性",
           apis:["Silent Authentication","Number Verification"],
-          desc:"Silent Auth 基于网络层自动完成认证，Number Verification 验证手机号与设备一致性"
+          desc:"Silent Auth 基于网络层自动完成认证，Number Verification 验证手机号与设备一致性",
+          sourceUrl:"https://www.u2opia.com/blog/what-is-silent-network-authentication"
         }
       ]
     },
     {
       industry:"电商/零售",
       icon:"cart",
+      sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/",
+      sourceName:"Telefónica 商用案例 (Vinted)",
       scenarios:[
         {
           scene:"用户注册验证",
@@ -546,6 +558,7 @@ var APP_DATA = {
       country:"阿联酋",
       policyName:"Notice 2025/3057",
       date:"2026-03-31",
+      newsDate:"2026-03-25",
       effectiveDate:"2026-03-31",
       summary:"要求所有持牌金融机构完全停用 SMS 和邮件 OTP，替代方案包括 FIDO2 passkeys、生物识别、设备绑定等。违规罚款最高 250,000 AED，SMS OTP 欺诈需全额赔偿客户。",
       impact:"Emirates NBD、ADIB、FAB 等已率先切换至生物识别认证，推动 Open Gateway SNA API 需求",
@@ -557,6 +570,7 @@ var APP_DATA = {
       country:"印度",
       policyName:"Authentication Mechanisms for Digital Payment Transactions Directions, 2025",
       date:"2025-09-25",
+      newsDate:"2025-09-25",
       effectiveDate:"2026-04-01",
       summary:"要求数字支付交易强制双因子认证，至少一个动态因子。不禁止 SMS OTP 但鼓励采用生物识别、app 令牌等替代方案。跨境 CNP 交易需额外验证。",
       impact:"推动 Jio、Airtel、Vi 与银行加速 SIM Swap API 和 Number Verification API 部署",
@@ -568,6 +582,7 @@ var APP_DATA = {
       country:"全球",
       policyName:"GSMA Task Force for SIM-based Authentication",
       date:"2026-01-15",
+      newsDate:"2026-01-15",
       effectiveDate:"2026 全年推进",
       summary:"GSMA 成立任务组加速 SIM 认证方案普及，解决运营商 entitlement server 支持和设备 OS 兼容问题",
       impact:"加速 Silent Authentication API 在全球运营商中的部署",
@@ -579,6 +594,7 @@ var APP_DATA = {
       country:"巴基斯坦",
       policyName:"PCI DSS v4.0.1 认证",
       date:"2026-04-27",
+      newsDate:"2026-04-27",
       effectiveDate:"2026",
       summary:"PTCL 和 Ufone 通过 PCI DSS v4.0.1 认证，经 Risk Associates 独立评估，覆盖云基础设施和持卡人数据环境",
       impact:"为巴基斯坦电信运营商开展 Carrier Billing API 业务奠定安全合规基础",
@@ -590,8 +606,9 @@ var APP_DATA = {
       country:"欧洲",
       policyName:"GDPR 数据保护条例",
       date:"2018-05-25",
+      newsDate:"2026-08-20",
       effectiveDate:"持续执行",
-      summary:"对所有处理欧盟居民个人数据的组织适用，违规罚款最高 2000 万欧元或全球营收 4%。Telefónica 已建立 GDPR 合规体系并应用于 Open Gateway API",
+      summary:"对所有处理欧盟居民个人数据的组织适用，违规罚款最高 2000 万欧元或全球营收 4%。Telefónica 已建立 GDPR 合规体系并应用于 Open Gateway API，2026 年持续强化 Privacy by Design",
       impact:"Open Gateway API 设计需遵循 Privacy by Design 原则，影响所有在欧洲运营的运营商 API 部署",
       source:"Telefónica / GDPR",
       sourceUrl:"https://www.telefonica.com/en/communication-room/reports/data-privacy-at-telefonica-innovation-and-digital-transparency"
