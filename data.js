@@ -1,11 +1,12 @@
 // GSMA Open Gateway 情报站 - 数据文件
-// 数据来源: GSMA 官网、CAMARA/Linux Foundation、5GWorldPro、Computer Weekly 等 (截至 2026-08-26)
-// 更新计划: 每日 10:00 自动巡检
+// 数据来源: GSMA 官网、CAMARA/Linux Foundation、5GWorldPro、运营商财报/公告、监管机构等
+// 更新方式: GitHub Actions 每日 10:00 (UTC+8) 自动抓取并部署
+// 历史新闻保留: 新动态追加到列表顶部，不删除旧数据
 var APP_DATA = {
   meta: {
     version: "2026-08-26",
     lastUpdate: "2026-08-26 10:00",
-    updateSchedule: "每日 10:00 自动巡检",
+    updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 26,
     operatorCount: 86,
     apiCount: 33,

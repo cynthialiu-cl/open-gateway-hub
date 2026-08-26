@@ -437,12 +437,13 @@ function renderDataSources() {
   html += '</div>';
   html += '<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bd);font-size:12px;color:var(--tx2);line-height:1.8">';
   html += '<strong style="color:var(--accent)">更新机制说明</strong><br>';
-  html += '· <strong>更新频率:</strong> 每日检查一次，检测到新信息时自动更新<br>';
-  html += '· <strong>数据来源:</strong> GSMA 官网、CAMARA/Linux Foundation、行业媒体、运营商官网等一手信源<br>';
-  html += '· <strong>更新方式:</strong> 自动抓取 GSMA Open Gateway 全球地图、CAMARA API 目录等公开数据源，辅以人工编辑审核<br>';
-  html += '· <strong>版本管理:</strong> 每次更新生成数据快照，支持历史版本对比与回溯<br>';
+  html += '· <strong>更新方式:</strong> GitHub Actions 每日 10:00 (UTC+8) 自动抓取 GSMA 官网、CAMARA GitHub Releases 等公开数据源<br>';
+  html += '· <strong>自动部署:</strong> 抓取脚本检测到新数据后自动提交代码并触发 GitHub Pages 重新部署<br>';
+  html += '· <strong>数据来源:</strong> GSMA 官网、CAMARA/Linux Foundation、运营商财报/公告、监管机构官网等一手信源<br>';
+  html += '· <strong>历史新闻:</strong> 所有历史动态均保留，新增动态追加到列表顶部，不做删除<br>';
+  html += '· <strong>版本管理:</strong> Git 提交记录可追溯每次数据变更，支持历史对比与回溯<br>';
   html += '· <strong>数据质量:</strong> 所有数据均标注来源链接，可点击追溯原始出处<br>';
-  html += '· <strong>更新范围:</strong> 行业动态、运营商信息、API 清单、市场数据、合作伙伴生态';
+  html += '· <strong>更新范围:</strong> 行业动态、运营商信息、CAMARA API 清单、市场数据、商用案例、监管政策、合规认证';
   html += '</div>';
   html += '<div style="margin-top:10px;font-size:11px;color:var(--accent);font-weight:500">' +
     '最后更新: ' + esc(D.meta.lastUpdate) + ' · 更新计划: ' + esc(D.meta.updateSchedule) +

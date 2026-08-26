@@ -3,7 +3,8 @@
 GSMA Open Gateway 情报站 - 每日数据抓取脚本
 数据来源: GSMA 官网、CAMARA GitHub、监管机构官网等公开信源
 运行方式: python3 scripts/fetch_data.py
-输出: 更新 data.js 中的 meta.lastUpdate 和 meta.version 字段
+说明: 仅更新 meta 信息和 CAMARA release 数据，历史新闻保留不删除
+输出: 更新 data.js 中的 meta 字段，输出 camara_releases.json
 """
 
 import json
