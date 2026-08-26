@@ -84,7 +84,7 @@ var APP_DATA = {
     {name:"SK Telecom",country:"韩国",region:"亚洲",type:"商业运营商",score:7.6,dims:[4,3,3,4,3,3],devPortal:"https://openapi.sk.com/"},
     {name:"Reliance Jio",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,3],devPortal:"https://developer.jio.com"},
     {name:"Bharti Airtel",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,3],devPortal:"https://developers.airtel.in/"},
-    {name:"MasOrange",country:"西班牙",region:"欧洲",type:"商业运营商",score:7.6,dims:[4,3,4,4,3,3],devPortal:"https://www.masorange.com/"},
+    {name:"MasOrange",country:"西班牙",region:"欧洲",type:"商业运营商",score:7.6,dims:[4,3,4,4,3,3],devPortal:""},
     {name:"Claro",country:"拉美多国",region:"拉美",type:"跨国运营商",score:7.2,dims:[3,3,3,4,3,3],devPortal:"https://www.claroinsight.com.br/"}
   ],
   dimLabels:["API 上线数","API 品类覆盖","商用化进展","安全合规","计费灵活","开发者生态"],

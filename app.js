@@ -185,7 +185,7 @@ function renderChannelPartners() {
       '<td style="font-weight:600' + (p.name === 'CITIC Telecom' ? ';color:var(--accent2)' : '') + '">' + esc(p.name) + (p.name === 'CITIC Telecom' ? ' ★' : '') + '</td>' +
       '<td>' + esc(p.type) + '</td>' +
       '<td style="white-space:normal">' + esc(p.apis) + '</td>' +
-      '<td><a href="' + esc(p.devPortal || '#') + '" target="_blank" style="font-size:12px">访问门户</a></td>' +
+      '<td>' + (p.devPortal ? '<a href="' + esc(p.devPortal) + '" target="_blank" style="font-size:12px">访问门户</a>' : '<span style="color:var(--tx3);font-size:12px">未公开</span>') + '</td>' +
       '</tr>';
   });
   html += '</tbody></table></div>';
@@ -203,7 +203,7 @@ function renderOperatorDevPortals() {
       '<td style="font-weight:600' + (citic ? ';color:var(--accent2)' : '') + '">' + esc(op.name) + (citic ? ' ★' : '') + '</td>' +
       '<td>' + esc(op.country) + '</td>' +
       '<td>' + esc(op.type) + '</td>' +
-      '<td><a href="' + esc(op.devPortal || '#') + '" target="_blank" style="font-size:12px">' + esc(op.devPortal || '未公开') + '</a></td>' +
+      '<td>' + (op.devPortal ? '<a href="' + esc(op.devPortal) + '" target="_blank" style="font-size:12px">' + esc(op.devPortal) + '</a>' : '<span style="color:var(--tx3);font-size:12px">未公开</span>') + '</td>' +
       '</tr>';
   });
   html += '</tbody></table></div>';
