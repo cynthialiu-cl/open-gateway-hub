@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GSMA Open Gateway 情报站 · 运营商开放网关生态追踪</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ===== 顶部导航 ===== -->
+<div class="topbar">
+  <div class="logo">Open Gateway <span>情报站</span></div>
+  <nav>
+    <a href="#m1">行业洞察</a>
+    <a href="#m2">能力对标</a>
+    <a href="#m3">差异化定位</a>
+    <a href="#m4">价格与模式</a>
+    <a href="#m5">技术架构</a>
+    <a href="#m6">商用案例</a>
+    <a href="#m7">监管合规</a>
+    <a href="#m8">数据来源</a>
+  </nav>
+  <div class="actions">
+    <div id="syncIndicator" class="sync-indicator" title="数据同步状态">
+      <span class="sync-dot synced"></span>
+      <span class="sync-text">已同步</span>
+    </div>
+    <button onclick="showShareDialog()">分享链接</button>
+    <button onclick="showHistory()">历史版本</button>
+    <button id="editBtn" onclick="toggleEdit()">编辑模式</button>
+  </div>
+</div>
+
+<!-- ===== Hero ===== -->
+<div class="hero">
+  <h1>GSMA Open Gateway 情报站 <span class="tag">内部参考资料</span></h1>
+  <div class="sub">GSMA Open Gateway 电信运营商开放网关行业生态追踪</div>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="label">数据版本</div>
+      <div class="value" id="dataVersion">-</div>
+      <div class="meta" id="lastUpdate">-</div>
+    </div>
+    <div class="hero-stat">
+      <div class="label">行业动态</div>
+      <div class="value green" id="newsCount">-</div>
+      <div class="meta">每日自动检查</div>
+    </div>
+    <div class="hero-stat">
+      <div class="label">运营商</div>
+      <div class="value accent" id="operatorCount">-</div>
+      <div class="meta">覆盖全球 80% 移动连接</div>
+    </div>
+    <div class="hero-stat">
+      <div class="label">CAMARA API</div>
+      <div class="value purple" id="apiCount">-</div>
+      <div class="meta">Stable + Beta</div>
+    </div>
+    <div class="hero-stat">
+      <div class="label">更新机制</div>
+      <div class="value" style="font-size:14px">自动 + 手动</div>
+      <div class="meta">历史版本可溯源</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 主内容 ===== -->
+<div class="main">
+
+  <!-- M1: 行业洞察 -->
+  <div class="module" id="m1">
+    <div class="module-header">
+      <span class="num">1</span>
+      <h2>行业洞察与生态动态</h2>
+      <span class="desc">GSMA Open Gateway 行业动态追踪</span>
+    </div>
+
+    <div class="filter-bar">
+      <div class="fg"><label>分类</label><select id="filterCat"></select></div>
+      <div class="fg"><label>运营商</label><select id="filterVendor"></select></div>
+      <div class="fg"><label>区域</label><select id="filterRegion"></select></div>
+      <div class="fg"><label>搜索</label><input type="text" id="filterKw" placeholder="关键词"></div>
+      <div class="spacer"></div>
+      <button class="btn-sm" onclick="addNews()">+ 新增动态</button>
+      <button class="btn-sm" onclick="downloadNewsExcel()">下载 CSV</button>
+    </div>
+
+    <div class="card">
+      <div class="card-title">动态时间轴 <span class="badge" id="newsCountDisplay">0</span> 条</div>
+      <div class="news-list" id="newsList"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">信源库</div>
+      <div id="sourcesList"></div>
+    </div>
+  </div>
+
+  <!-- M2: 能力对标 -->
+  <div class="module" id="m2">
+    <div class="module-header">
+      <span class="num">2</span>
+      <h2>运营商能力对标</h2>
+      <span class="desc">16 家运营商 · 16 项能力 · 6 维加权评分</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">运营商综合能力排名 <span class="badge">6 维加权: API上线数25% + 品类覆盖20% + 商用进展20% + 安全合规12% + 计费灵活13% + SLA保障10%</span></div>
+      <div class="rank-list" id="rankList"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">分项能力排名</div>
+      <div class="view-tabs">
+        <span class="view-tab active" data-group="dim" data-view="0">API上线数</span>
+        <span class="view-tab" data-group="dim" data-view="1">品类覆盖</span>
+        <span class="view-tab" data-group="dim" data-view="2">商用进展</span>
+        <span class="view-tab" data-group="dim" data-view="3">安全合规</span>
+        <span class="view-tab" data-group="dim" data-view="4">计费灵活</span>
+        <span class="view-tab" data-group="dim" data-view="5">SLA保障</span>
+      </div>
+      <div class="rank-list" id="dimRankList"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">能力热力矩阵 <span class="badge">16 项能力 x 16 家运营商</span></div>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot green"></div> 完整支持</div>
+        <div class="legend-item"><div class="legend-dot yellow"></div> 部分支持</div>
+        <div class="legend-item"><div class="legend-dot white"></div> 无/不适用</div>
+      </div>
+      <div id="heatmapContainer"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">CAMARA API 清单 <span class="badge">20 项</span></div>
+      <div id="camaraApiList"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">渠道合作伙伴 <span class="badge">15 家</span></div>
+      <div id="channelPartners"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">总能力雷达图 <span class="badge">8 维度</span></div>
+      <div class="radar-container" id="radarContainer"></div>
+    </div>
+  </div>
+
+  <!-- M3: 差异化定位 -->
+  <div class="module" id="m3">
+    <div class="module-header">
+      <span class="num">3</span>
+      <h2>差异化定位</h2>
+      <span class="desc">市场数据 · 调用量排行 · 营收数据 · 覆盖率趋势 · 差异化矩阵</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">市场数据概览</div>
+      <div id="marketData"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">差异化能力矩阵</div>
+      <div id="diffContainer"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">API 调用量排行 <span class="badge">6 条数据</span></div>
+      <div id="apiCallVolumeContainer"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">营收数据 <span class="badge">5 条数据</span></div>
+      <div id="revenueDataContainer"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">覆盖率趋势 <span class="badge">2023-2026</span></div>
+      <div id="coverageTrendsContainer"></div>
+    </div>
+  </div>
+
+  <!-- M4: 价格与模式 -->
+  <div class="module" id="m4">
+    <div class="module-header">
+      <span class="num">4</span>
+      <h2>价格与商业模式</h2>
+      <span class="desc">计费模式对比</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">计费模式对比</div>
+      <div id="billingModels"></div>
+    </div>
+  </div>
+
+  <!-- M5: 技术架构 -->
+  <div class="module" id="m5">
+    <div class="module-header">
+      <span class="num">5</span>
+      <h2>技术架构</h2>
+      <span class="desc">7 层分层参考架构 · 代表合作伙伴自动标注</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">分层参考架构</div>
+      <div id="archContainer"></div>
+    </div>
+  </div>
+
+  <!-- M6: 商用案例与应用场景 -->
+  <div class="module" id="m6">
+    <div class="module-header">
+      <span class="num">6</span>
+      <h2>商用案例与应用场景</h2>
+      <span class="desc">全球真实商用落地案例 · 行业应用场景与 API 适配</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">商用/试商用案例 <span class="badge">12 个案例</span></div>
+      <div id="commercialCases"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">行业应用场景 <span class="badge">6 大行业 · 15 个场景</span></div>
+      <div id="appScenarios"></div>
+    </div>
+  </div>
+
+  <!-- M7: 监管动态与标准合规 -->
+  <div class="module" id="m7">
+    <div class="module-header">
+      <span class="num">7</span>
+      <h2>监管动态与标准合规</h2>
+      <span class="desc">监管政策追踪 · CAMARA 标准进展 · 安全合规认证</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">监管动态 <span class="badge">6 条政策</span></div>
+      <div id="regulatoryContainer"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">CAMARA 标准进展 <span class="badge">8 项 API 规范</span></div>
+      <div id="camaraStandardsContainer"></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">合规认证 <span class="badge">7 条记录</span></div>
+      <div id="complianceContainer"></div>
+    </div>
+  </div>
+
+  <!-- M8: 数据来源与更新说明 -->
+  <div class="module" id="m8">
+    <div class="module-header">
+      <span class="num">8</span>
+      <h2>数据来源与更新说明</h2>
+      <span class="desc">可追溯信源 · 更新机制 · 最后更新时间</span>
+    </div>
+    <div id="dataSourcesSection"></div>
+  </div>
+
+</div>
+
+<!-- ===== 底部操作栏 ===== -->
+<div style="position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-top:1px solid var(--bd);padding:8px 20px;display:flex;gap:8px;justify-content:center;z-index:100">
+  <button class="btn-sm" onclick="showShareDialog()">分享链接</button>
+  <button class="btn-sm" onclick="saveSnapshot()">保存快照</button>
+  <button class="btn-sm" onclick="exportData()">导出 JSON</button>
+  <button class="btn-sm" onclick="importData()">导入 JSON</button>
+</div>
+
+<!-- ===== 模态框 ===== -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent"></div>
+</div>
+
+<!-- ===== Toast ===== -->
+<div class="toast" id="toast"></div>
+
+<!-- ===== 底部 ===== -->
+<div class="footer" style="margin-bottom:48px">
+  GSMA Open Gateway 情报站 · 内部参考资料 · 每日自动检查更新 · 基于一手信源 · 历史版本可溯源<br>
+  <span style="color:var(--accent);font-weight:500">数据版本: <span id="footerVersion">-</span> · 最后更新: <span id="footerUpdate">-</span></span>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
