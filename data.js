@@ -76,16 +76,16 @@ var APP_DATA = {
     {name:"中国联通",country:"中国",region:"中国内地",type:"国有运营商",score:8.6,dims:[4,5,4,5,5,3],devPortal:"https://open.10010.com/"},
     {name:"中国移动",country:"中国",region:"中国内地",type:"国有运营商",score:8.4,dims:[4,5,4,4,5,3],devPortal:"https://open.10086.cn/"},
     {name:"中国电信",country:"中国",region:"中国内地",type:"国有运营商",score:8.5,dims:[5,5,4,4,4,3],devPortal:"https://open.189.cn/"},
-    {name:"CITIC Telecom",country:"中国香港",region:"中国内地",type:"跨国运营商",score:7.8,dims:[3,3,4,4,4,3],devPortal:"https://www.citictel.com/"},
-    {name:"Verizon",country:"美国",region:"北美洲",type:"商业运营商",score:8.0,dims:[4,3,4,4,3,4],devPortal:"https://www.verizon.com/business/"},
+    {name:"CITIC Telecom",country:"中国香港",region:"中国内地",type:"跨国运营商",score:7.8,dims:[3,3,4,4,4,3],devPortal:"https://developer.citictel.com/"},
+    {name:"Verizon",country:"美国",region:"北美洲",type:"商业运营商",score:8.0,dims:[4,3,4,4,3,4],devPortal:"https://developers.verizon.com/"},
     {name:"AT&T",country:"美国",region:"北美洲",type:"商业运营商",score:7.8,dims:[4,3,4,4,3,4],devPortal:"https://developer.att.com/"},
     {name:"T-Mobile US",country:"美国",region:"北美洲",type:"商业运营商",score:7.6,dims:[4,3,3,4,3,4],devPortal:"https://developer.t-mobile.com/"},
     {name:"NTT Docomo",country:"日本",region:"亚洲",type:"商业运营商",score:7.8,dims:[4,3,4,4,3,3],devPortal:"https://dev.smt.docomone.jp/"},
-    {name:"SK Telecom",country:"韩国",region:"亚洲",type:"商业运营商",score:7.6,dims:[4,3,3,4,3,3],devPortal:"https://www.sktelecom.com/"},
-    {name:"Reliance Jio",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,3],devPortal:"https://www.jio.com/"},
-    {name:"Bharti Airtel",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,3],devPortal:"https://www.airtel.in/"},
+    {name:"SK Telecom",country:"韩国",region:"亚洲",type:"商业运营商",score:7.6,dims:[4,3,3,4,3,3],devPortal:"https://openapi.sk.com/"},
+    {name:"Reliance Jio",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,3],devPortal:"https://developer.jio.com"},
+    {name:"Bharti Airtel",country:"印度",region:"亚洲",type:"商业运营商",score:7.4,dims:[4,3,3,3,3,3],devPortal:"https://developers.airtel.in/"},
     {name:"MasOrange",country:"西班牙",region:"欧洲",type:"商业运营商",score:7.6,dims:[4,3,4,4,3,3],devPortal:"https://www.masorange.com/"},
-    {name:"Claro",country:"拉美多国",region:"拉美",type:"跨国运营商",score:7.2,dims:[3,3,3,4,3,3],devPortal:"https://www.claro.com.br/"}
+    {name:"Claro",country:"拉美多国",region:"拉美",type:"跨国运营商",score:7.2,dims:[3,3,3,4,3,3],devPortal:"https://www.claroinsight.com.br/"}
   ],
   dimLabels:["API 上线数","API 品类覆盖","商用化进展","安全合规","计费灵活","开发者生态"],
   dimWeights:["25%","20%","20%","12%","13%","10%"],
@@ -173,7 +173,7 @@ var APP_DATA = {
     {name:"Oracle",type:"技术伙伴",apis:"Carrier Billing",devPortal:"https://docs.oracle.com/"},
     {name:"BlackDice",type:"安全/反欺诈",apis:"AI 驱动网络级反欺诈安全能力",devPortal:"https://www.blackdice.com/"},
     {name:"Codec",type:"CPaaS",apis:"Number Verify, SIM Swap, OTP",devPortal:"https://www.codec.com/"},
-    {name:"CITIC Telecom",type:"NaaS/聚合",apis:"Number Verify, SIM Swap, QoD, Location, OTP",devPortal:"https://www.citictel.com/"}
+    {name:"CITIC Telecom",type:"NaaS/聚合",apis:"Number Verify, SIM Swap, QoD, Location, OTP",devPortal:"https://developer.citictel.com/"}
   ],
   // 市场规模数据
   marketData:{
