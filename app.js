@@ -437,8 +437,8 @@ function renderDataSources() {
   html += '</div>';
   html += '<div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--bd);font-size:12px;color:var(--tx2);line-height:1.8">';
   html += '<strong style="color:var(--accent)">更新机制说明</strong><br>';
-  html += '· <strong>更新方式:</strong> GitHub Actions 每日 10:00 (UTC+8) 自动抓取 GSMA 官网、CAMARA GitHub Releases 等公开数据源<br>';
-  html += '· <strong>自动部署:</strong> 抓取脚本检测到新数据后自动提交代码并触发 GitHub Pages 重新部署<br>';
+  html += '· <strong>更新方式:</strong> 每日 10:00 (UTC+8) 自动抓取 GSMA 官网、CAMARA GitHub Releases 等公开数据源<br>';
+  html += '· <strong>自动部署:</strong> 抓取脚本检测到新数据后自动提交并触发页面重新部署<br>';
   html += '· <strong>数据来源:</strong> GSMA 官网、CAMARA/Linux Foundation、运营商财报/公告、监管机构官网等一手信源<br>';
   html += '· <strong>历史新闻:</strong> 所有历史动态均保留，新增动态追加到列表顶部，不做删除<br>';
   html += '· <strong>版本管理:</strong> Git 提交记录可追溯每次数据变更，支持历史对比与回溯<br>';
