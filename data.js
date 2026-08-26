@@ -5,13 +5,15 @@
 var APP_DATA = {
   meta: {
     version: "2026-08-26",
-    lastUpdate: "2026-08-26 10:00",
+    lastUpdate: "2026-08-26 12:12",
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 32,
     operatorCount: 86,
     apiCount: 33,
+    commercialApiCount: 20,
     marketCount: 65,
     channelPartners: 79,
+    dataNote: "H1 2026 渠道合作伙伴 77 家，8 月最新 79 家(含 IBM + Codec)；33 个 CAMARA 认证 API 含 Beta，20 个已商用部署",
     baseline: "GSMA Open Gateway + CAMARA + TM Forum",
     dataSources: {
       gsma: {name:"GSMA 官网",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
@@ -230,7 +232,7 @@ var APP_DATA = {
   ],
   // 营收数据
   revenueData:[
-    {operator:"Telefónica",revenue:"4500 万",currency:"欧元",period:"年 (2025-2026)",note:"API 业务年收入，850+ 开发者接入",source:"Telefónica 财报/GSMA",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
+    {operator:"Telefónica",revenue:"4500 万",currency:"欧元",period:"年 (2025-2026)",note:"API 业务年收入(GSMA/行业估算，非 Telefónica 官方财报独立披露)，850+ 开发者接入",source:"5GWorldPro/GSMA",sourceUrl:"https://5gworldpro.com/blog/2026/08/14/network-apis-and-camara-why-telecoms-api-monetization-push-is-finally-working-in-2026/"},
     {operator:"GSMA (全行业)",revenue:"3000 亿",currency:"美元",period:"5-7 年预测",note:"网络 API 市场收入 (连接+边缘)",source:"GSMA 预测",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
     {operator:"GSMA (全行业)",revenue:"300 亿",currency:"美元",period:"5-7 年预测",note:"API 本身额外营收",source:"GSMA 预测",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/"},
     {operator:"麦肯锡 (全行业)",revenue:"300-500 亿",currency:"美元",period:"至 2030 年",note:"网络能力 API 核心价值",source:"麦肯锡报告",sourceUrl:"#"},
