@@ -5,7 +5,7 @@
 var APP_DATA = {
   meta: {
     version: "2026-08-27",
-    lastUpdate: "2026-08-27 10:58",
+    lastUpdate: "2026-08-27 11:08",
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 32,
     operatorCount: 86,
