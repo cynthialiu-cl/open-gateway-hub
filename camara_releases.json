@@ -1,0 +1,116 @@
+{
+  "fetchTime": "2026-08-27 10:58",
+  "releases": {
+    "NumberVerification": [
+      {
+        "tag": "r3.2",
+        "name": "r3.2",
+        "date": "2025-09-12",
+        "prerelease": false,
+        "url": "https://github.com/camaraproject/NumberVerification/releases/tag/r3.2"
+      },
+      {
+        "tag": "r3.1",
+        "name": "r3.1",
+        "date": "2025-07-18",
+        "prerelease": true,
+        "url": "https://github.com/camaraproject/NumberVerification/releases/tag/r3.1"
+      },
+      {
+        "tag": "r2.4",
+        "name": "r2.4",
+        "date": "2025-03-20",
+        "prerelease": false,
+        "url": "https://github.com/camaraproject/NumberVerification/releases/tag/r2.4"
+      },
+      {
+        "tag": "r2.2",
+        "name": "r2.2",
+        "date": "2025-02-20",
+        "prerelease": true,
+        "url": "https://github.com/camaraproject/NumberVerification/releases/tag/r2.2"
+      },
+      {
+        "tag": "r2.1",
+        "name": "r2.1",
+        "date": "2025-02-17",
+        "prerelease": true,
+        "url": "https://github.com/camaraproject/NumberVerification/releases/tag/r2.1"
+      }
+    ],
+    "SimSwap": [
+      {
+        "tag": "r3.3",
+        "name": "r3.3",
+        "date": "2025-12-01",
+        "prerelease": false,
+        "url": "https://github.com/camaraproject/SimSwap/releases/tag/r3.3"
+      },
+      {
+        "tag": "r3.2",
+        "name": "r3.2",
+        "date": "2025-09-17",
+        "prerelease": false,
+        "url": "https://github.com/camaraproject/SimSwap/releases/tag/r3.2"
+      },
+      {
+        "tag": "r3.1",
+        "name": "r3.1",
+        "date": "2025-07-18",
+        "prerelease": true,
+        "url": "https://github.com/camaraproject/SimSwap/releases/tag/r3.1"
+      },
+      {
+        "tag": "r1.4",
+        "name": "r1.4",
+        "date": "2025-04-04",
+        "prerelease": false,
+        "url": "https://github.com/camaraproject/SimSwap/releases/tag/r1.4"
+      },
+      {
+        "tag": "r2.2",
+        "name": "r2.2",
+        "date": "2025-03-13",
+        "prerelease": false,
+        "url": "https://github.com/camaraproject/SimSwap/releases/tag/r2.2"
+      }
+    ],
+    "QualityOnDemand": [
+      {
+        "tag": "r4.1",
+        "name": "r4.1",
+        "date": "2026-08-20",
+        "prerelease": true,
+        "url": "https://github.com/camaraproject/QualityOnDemand/releases/tag/r4.1"
+      },
+      {
+        "tag": "r3.2",
+        "name": "r3.2",
+        "date": "2025-09-16",
+        "prerelease": false,
+        "url": "https://github.com/camaraproject/QualityOnDemand/releases/tag/r3.2"
+      },
+      {
+        "tag": "r3.1",
+        "name": "r3.1",
+        "date": "2025-07-17",
+        "prerelease": true,
+        "url": "https://github.com/camaraproject/QualityOnDemand/releases/tag/r3.1"
+      },
+      {
+        "tag": "r2.2",
+        "name": "r2.2",
+        "date": "2025-03-11",
+        "prerelease": false,
+        "url": "https://github.com/camaraproject/QualityOnDemand/releases/tag/r2.2"
+      },
+      {
+        "tag": "r2.1",
+        "name": "r2.1",
+        "date": "2025-02-10",
+        "prerelease": true,
+        "url": "https://github.com/camaraproject/QualityOnDemand/releases/tag/r2.1"
+      }
+    ]
+  }
+}
