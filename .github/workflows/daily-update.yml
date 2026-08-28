@@ -4,8 +4,10 @@ name: Daily Data Update
 
 on:
   schedule:
-    # UTC 02:00 = 北京时间 10:00
-    - cron: '0 2 * * *'
+    # UTC 00:00 = 北京时间 08:00 (提前2小时,给GitHub延迟留余量)
+    - cron: '0 0 * * *'
+    # UTC 04:00 = 北京时间 12:00 (补跑一次)
+    - cron: '0 4 * * *'
   # 支持手动触发
   workflow_dispatch:
 
@@ -13,6 +15,10 @@ permissions:
   contents: write
   pages: write
   id-token: write
+
+concurrency:
+  group: "daily-update"
+  cancel-in-progress: false
 
 jobs:
   fetch-and-update:
