@@ -108,7 +108,7 @@ table .c{text-align:center}
 .heat-table{font-size:12px}
 .heat-table th,.heat-table td{text-align:center;padding:5px 8px}
 .heat-table thead th{font-size:11px;color:var(--tx2);white-space:nowrap}
-.heat-table tbody th{text-align:left;color:var(--tx2);white-space:nowrap}
+.heat-table tbody th{text-align:left;color:var(--tx2)}
 .heat-2{background:#d1fae5;color:#059669;font-weight:600}
 .heat-1{background:#fef3c7;color:#e29e1e}
 .heat-0{background:var(--bg3);color:var(--tx3)}

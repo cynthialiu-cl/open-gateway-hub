@@ -87,25 +87,17 @@ function renderRanking() {
 
 // ===== M2: 分项能力排名 =====
 function renderDimRanking(dimIdx) {
-  // 维度说明
-  var explain = D.dimExplain && D.dimExplain[dimIdx] ? D.dimExplain[dimIdx] : '';
-  var explainHtml = explain ? '<div class="dim-explain" id="dimExplain">' +
-    '<span class="dim-explain-icon">&#9432;</span>' +
-    '<span><strong>' + esc(D.dimLabels[dimIdx]) + ':</strong> ' + esc(explain) + '</span>' +
-    '</div>' : '';
-
   var sorted = D.operators.slice().sort(function(a, b) {
     return b.dims[dimIdx] - a.dims[dimIdx];
   });
-  var html = explainHtml + sorted.map(function(op, i) {
+  var html = sorted.map(function(op, i) {
     var rank = i + 1;
     var numClass = rank === 1 ? 'r1' : rank === 2 ? 'r2' : rank === 3 ? 'r3' : 'rx';
     var score = op.dims[dimIdx];
     var pct = (score / 5) * 100;
-    var citicHighlight = op.name === 'CITIC Telecom' ? ';color:var(--accent2);font-weight:700' : '';
     return '<div class="rank-item">' +
       '<div class="rank-num ' + numClass + '">' + rank + '</div>' +
-      '<div class="rank-name" style="' + citicHighlight + '">' + esc(op.name) + (op.name === 'CITIC Telecom' ? ' ★' : '') + '</div>' +
+      '<div class="rank-name">' + esc(op.name) + '</div>' +
       '<span style="font-size:11px;color:var(--tx3);min-width:80px">' + esc(op.country) + '</span>' +
       '<div class="rank-bar"><div class="rank-bar-fill" style="width:' + pct + '%"></div></div>' +
       '<div class="rank-score">' + score + '/5</div>' +
@@ -130,47 +122,32 @@ function renderHeatmap() {
       matrix[i].forEach(function(val) {
         var cls = val === 2 ? 'heat-2' : val === 1 ? 'heat-1' : 'heat-0';
         var sym = val === 2 ? '●' : val === 1 ? '◐' : '○';
-        html += '<td class="' + cls + '" title="' + (val===2?'已商用':val===1?'试点/部分支持':'未部署') + '">' + sym + '</td>';
+        html += '<td class="' + cls + '">' + sym + '</td>';
       });
     }
     html += '</tr>';
   });
   html += '</tbody></table></div>';
-  // 图例
-  html += '<div style="margin-top:8px;font-size:12px;color:var(--tx2)"><span class="heat-2" style="padding:2px 8px;border-radius:3px">● 已商用</span> <span class="heat-1" style="padding:2px 8px;border-radius:3px;margin-left:8px">◐ 试点/部分支持</span> <span class="heat-0" style="padding:2px 8px;border-radius:3px;margin-left:8px">○ 未部署</span></div>';
   document.getElementById('heatmapContainer').innerHTML = html;
 }
 
-// ===== M2: CAMARA API 清单（含版本和标准进展） =====
+// ===== M2: CAMARA API 清单 =====
 function renderCamaraAPIs() {
-  var html = '<div style="margin-bottom:10px;padding:8px 14px;background:rgba(13,115,119,.05);border:1px solid rgba(13,115,119,.1);border-radius:var(--radius-sm);font-size:12px;color:var(--tx2)">' +
-    '<strong style="color:var(--accent)">版本说明:</strong> Stable = 正式发布可商用 · Release Candidate (RC) = 候选版测试中 · Beta = 早期测试 · ' +
-    '<a href="https://github.com/camaraproject/Commonalities" target="_blank" style="font-size:12px">Commonalities</a> 和 ' +
-    '<a href="https://github.com/camaraproject/IdentityAndConsentManagement" target="_blank" style="font-size:12px">ICM</a> 是所有 API 必须遵循的基础设计规范和安全框架' +
-    '</div>';
-  html += '<div class="tbl-wrap"><table><thead><tr>' +
-    '<th>API 名称</th><th>当前版本</th><th>发布标签</th><th>状态</th><th>说明</th><th>分类</th><th>商用市场</th><th>GitHub</th>' +
+  var html = '<div class="tbl-wrap"><table><thead><tr>' +
+    '<th>API 名称</th><th>版本</th><th>说明</th><th>状态</th><th>分类</th><th>商用市场</th><th>CAMARA</th>' +
     '</tr></thead><tbody>';
   D.camaraAPIs.forEach(function(api) {
     var statusClass = api.status === 'Stable' ? 'green-cell' : 'yellow-cell';
-    var statusText = api.status;
-    if (api.version && api.version.indexOf('rc') >= 0) {
-      statusClass = 'yellow-cell';
-      statusText = 'RC';
-    }
     html += '<tr>' +
       '<td style="font-weight:600">' + esc(api.name) + '</td>' +
       '<td class="c" style="font-weight:600;color:var(--accent2)">' + esc(api.version || '-') + '</td>' +
-      '<td class="c">' + esc(api.releaseTag || '-') + '</td>' +
-      '<td class="' + statusClass + '">' + esc(statusText) + '</td>' +
-      '<td style="white-space:normal;max-width:200px">' + esc(api.desc) + '</td>' +
+      '<td style="white-space:normal;max-width:220px">' + esc(api.desc) + '</td>' +
+      '<td class="' + statusClass + '">' + esc(api.status) + '</td>' +
       '<td>' + esc(api.category) + '</td>' +
       '<td class="c">' + api.launchMarkets + '</td>' +
-      '<td><a href="' + esc(api.camaraUrl || '#') + '" target="_blank" style="font-size:12px">Releases</a></td>' +
+      '<td><a href="' + esc(api.camaraUrl || '#') + '" target="_blank" style="font-size:12px">' + esc(api.releaseTag || '查看') + '</a></td>' +
       '</tr>';
   });
-  // 添加基础规范行
-  html += '<tr style="background:rgba(109,40,217,.03)"><td colspan="8" style="font-size:11px;color:var(--tx3);font-style:italic">基础规范: Commonalities v0.6.0 (r3.3) — API 设计指南 | Identity & Consent Management v0.4.0 (r3.3) — 认证授权与隐私框架 — 以上两个规范非 API，是所有 CAMARA API 必须遵循的基础规则</td></tr>';
   html += '</tbody></table></div>';
   document.getElementById('camaraApiList').innerHTML = html;
 }
@@ -185,30 +162,11 @@ function renderChannelPartners() {
       '<td style="font-weight:600' + (p.name === 'CITIC Telecom' ? ';color:var(--accent2)' : '') + '">' + esc(p.name) + (p.name === 'CITIC Telecom' ? ' ★' : '') + '</td>' +
       '<td>' + esc(p.type) + '</td>' +
       '<td style="white-space:normal">' + esc(p.apis) + '</td>' +
-      '<td>' + (p.devPortal ? '<a href="' + esc(p.devPortal) + '" target="_blank" style="font-size:12px">访问门户</a>' : '<span style="color:var(--tx3);font-size:12px">未公开</span>') + '</td>' +
+      '<td><a href="' + esc(p.devPortal || '#') + '" target="_blank" style="font-size:12px">访问门户</a></td>' +
       '</tr>';
   });
   html += '</tbody></table></div>';
   document.getElementById('channelPartners').innerHTML = html;
-}
-
-// ===== M2: 运营商开发者门户 =====
-function renderOperatorDevPortals() {
-  var html = '<div class="tbl-wrap"><table><thead><tr>' +
-    '<th>运营商</th><th>国家/地区</th><th>类型</th><th>开发者门户</th>' +
-    '</tr></thead><tbody>';
-  D.operators.forEach(function(op) {
-    var citic = op.name === 'CITIC Telecom';
-    html += '<tr>' +
-      '<td style="font-weight:600' + (citic ? ';color:var(--accent2)' : '') + '">' + esc(op.name) + (citic ? ' ★' : '') + '</td>' +
-      '<td>' + esc(op.country) + '</td>' +
-      '<td>' + esc(op.type) + '</td>' +
-      '<td>' + (op.devPortal ? '<a href="' + esc(op.devPortal) + '" target="_blank" style="font-size:12px">' + esc(op.devPortal) + '</a>' : '<span style="color:var(--tx3);font-size:12px">未公开</span>') + '</td>' +
-      '</tr>';
-  });
-  html += '</tbody></table></div>';
-  var el = document.getElementById('operatorDevPortals');
-  if (el) el.innerHTML = html;
 }
 
 // ===== M2: 雷达图 =====
@@ -441,22 +399,20 @@ function renderBilling() {
 function renderArchitecture() {
   var html = '';
   if (D.architectureSource) {
-    html += '<div style="margin-bottom:14px;padding:10px 14px;background:rgba(13,115,119,.05);border:1px solid rgba(13,115,119,.12);border-radius:var(--radius-sm);font-size:12px;color:var(--tx2);line-height:1.7"><strong style="color:var(--accent)">架构来源与说明:</strong> ' + esc(D.architectureSource) + '</div>';
+    html += '<div style="margin-bottom:14px;padding:10px 14px;background:rgba(13,115,119,.05);border:1px solid rgba(13,115,119,.12);border-radius:var(--radius-sm);font-size:12px;color:var(--tx2)"><strong style="color:var(--accent)">架构来源:</strong> ' + esc(D.architectureSource) + '</div>';
   }
   html += '<div class="arch-stack">';
   D.architecture.forEach(function(a, i) {
     var vendorTags = (a.vendors || []).map(function(v) {
       return '<span class="vendor-tag' + (v.indexOf('CITIC') >= 0 ? ' citic' : '') + '">' + esc(v) + '</span>';
     }).join('');
-    var arrow = i < D.architecture.length - 1 ? '<div class="layer-arrow">&#8595;</div>' : '';
     html += '<div class="arch-layer">' +
       '<div class="layer-num">' + (i + 1) + '</div>' +
       '<div class="layer-content">' +
       '<div class="layer-name">' + esc(a.layer) + '</div>' +
       '<div class="layer-desc">' + esc(a.desc) + '</div>' +
       '<div class="layer-vendors" style="margin-top:6px">' + vendorTags + '</div>' +
-      (a.relation ? '<div class="layer-relation"><span class="relation-label">关联:</span> ' + esc(a.relation) + '</div>' : '') +
-      '</div></div>' + arrow;
+      '</div></div>';
   });
   html += '</div>';
   document.getElementById('archContainer').innerHTML = html;
@@ -906,7 +862,6 @@ function renderAll() {
   renderHeatmap();
   renderCamaraAPIs();
   renderChannelPartners();
-  renderOperatorDevPortals();
   renderRadar();
   renderMarketData();
   renderDiff();
@@ -920,6 +875,7 @@ function renderAll() {
   renderSources();
   renderDataSources();
   renderRegulatory();
+  renderCamaraStandards();
   renderCompliance();
 }
 
