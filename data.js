@@ -4,8 +4,8 @@
 // 历史新闻保留: 新动态追加到列表顶部，不删除旧数据
 var APP_DATA = {
   meta: {
-    version: "2026-09-01",
-    lastUpdate: "2026-09-01 12:04",
+    version: "2026-09-02",
+    lastUpdate: "2026-09-02 08:21",
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 32,
     operatorCount: 86,
@@ -74,7 +74,8 @@ var APP_DATA = {
     {date:"2026-05-28",cat:"partner",catName:"渠道伙伴",vendor:"GSMA",title:"Netapi Telecom Gsma Open Gateway Channel Partner Africa",source:"GSMA 官网",region:"非洲",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/netapi-telecom-gsma-open-gateway-channel-partner-africa/",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/netapi-telecom-gsma-open-gateway-channel-partner-africa/",summary:"Netapi Telecom Gsma Open Gateway Channel Partner Africa"},
     {date:"2026-05-27",cat:"industry",catName:"行业动态",vendor:"GSMA",title:"Vnpt Achieves Gsma Opengateway Certification",source:"GSMA 官网",region:"亚洲",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/vnpt-achieves-gsma-opengateway-certification/",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/vnpt-achieves-gsma-opengateway-certification/",summary:"Vnpt Achieves Gsma Opengateway Certification"},
     {date:"2026-05-20",cat:"partner",catName:"渠道伙伴",vendor:"GSMA",title:"Plumma Becomes Gsma Open Gateway Channel Partner Italys Pioneer For Network Apis In Enterprise Fraud Prevention And Identity Verification 2",source:"GSMA 官网",region:"全球",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/plumma-becomes-gsma-open-gateway-channel-partner-italys-pioneer-for-network-apis-in-enterprise-fraud-prevention-and-identity-verification-2/",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/plumma-becomes-gsma-open-gateway-channel-partner-italys-pioneer-for-network-apis-in-enterprise-fraud-prevention-and-identity-verification-2/",summary:"Plumma Becomes Gsma Open Gateway Channel Partner Italys Pioneer For Network Apis In Enterprise Fraud Prevention And Identity Verification 2"},
-    {date:"2026-03-30",cat:"industry",catName:"行业动态",vendor:"GSMA",title:"Broadcast Industry Urges Mobile Network Operators To Help Commercialise Live Production Over 5g By Exposing Standardised Quality On Demand A",source:"GSMA 官网",region:"全球",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/broadcast-industry-urges-mobile-network-operators-to-help-commercialise-live-production-over-5g-by-exposing-standardised-quality-on-demand-a/",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/broadcast-industry-urges-mobile-network-operators-to-help-commercialise-live-production-over-5g-by-exposing-standardised-quality-on-demand-a/",summary:"Broadcast Industry Urges Mobile Network Operators To Help Commercialise Live Production Over 5g By Exposing Standardised Quality On Demand A"}
+    {date:"2026-03-30",cat:"industry",catName:"行业动态",vendor:"GSMA",title:"Broadcast Industry Urges Mobile Network Operators To Help Commercialise Live Production Over 5g By Exposing Standardised Quality On Demand A",source:"GSMA 官网",region:"全球",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/broadcast-industry-urges-mobile-network-operators-to-help-commercialise-live-production-over-5g-by-exposing-standardised-quality-on-demand-a/",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/broadcast-industry-urges-mobile-network-operators-to-help-commercialise-live-production-over-5g-by-exposing-standardised-quality-on-demand-a/",summary:"Broadcast Industry Urges Mobile Network Operators To Help Commercialise Live Production Over 5g By Exposing Standardised Quality On Demand A"},
+    {date:"2026-08-18",cat:"industry",catName:"行业动态",vendor:"GSMA",title:"Ibm Consulting Gsma Open Gateway Enterprise Network Api Adoption",source:"GSMA 官网",region:"全球",url:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/ibm-consulting-gsma-open-gateway-enterprise-network-api-adoption/",sourceUrl:"https://www.gsma.com/solutions-and-impact/gsma-open-gateway/ibm-consulting-gsma-open-gateway-enterprise-network-api-adoption/",summary:"Ibm Consulting Gsma Open Gateway Enterprise Network Api Adoption"}
   ],
   newsSources:["GSMA 官网/新闻","CAMARA GitHub/Linux Foundation","行业媒体(5GWorldPro/Asia Tech Journal/Computer Weekly)","运营商官网/新闻中心","财经产业媒体","政府监管机构","研报智库(麦肯锡/GSMA)","微信公众号","MWC 大会公告","Pyxis.tech","EIN Presswire","Briefpedia","中国工信新闻网","APIs.io","LinkedIn"],
   // M2: 运营商能力对标
@@ -109,28 +110,28 @@ var APP_DATA = {
   ],
   // CAMARA API 清单 (名称与 camaraproject.org 官方一致)
   camaraAPIs:[
-    {name:"Number Verification",desc:"验证手机号与设备 SIM 一致性(无 SMS OTP)",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:35,camaraUrl:"https://camaraproject.org/number-verification/"},
-    {name:"Sim Swap",desc:"检测 SIM 卡近期是否被更换",status:"Stable",version: "2026-09-01",releaseTag:"r3.3",category:"认证与反欺诈",launchMarkets:40,camaraUrl:"https://camaraproject.org/sim-swap/"},
-    {name:"Device Status",desc:"设备在线/漫游/离线状态查询",status:"Stable",version: "2026-09-01",releaseTag:"r2.2",category:"设备信息",launchMarkets:20,camaraUrl:"https://github.com/camaraproject/DeviceStatus"},
-    {name:"Device Roaming Status",desc:"设备漫游状态及所在国家",status:"Stable",version: "2026-09-01",releaseTag:"r1.2",category:"设备信息",launchMarkets:18,camaraUrl:"https://camaraproject.org/device-roaming-status/"},
-    {name:"Device Reachability Status",desc:"设备是否可通过 SMS/数据到达",status:"Stable",version: "2026-09-01",releaseTag:"r1.2",category:"设备信息",launchMarkets:15,camaraUrl:"https://camaraproject.org/device-reachability-status/"},
-    {name:"Location Verification",desc:"设备位置验证(地理围栏)",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"位置服务",launchMarkets:12,camaraUrl:"https://camaraproject.org/location-verification/"},
-    {name:"Quality on Demand",desc:"按需请求网络质量保障(延迟/带宽)",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"网络质量",launchMarkets:8,camaraUrl:"https://camaraproject.org/quality-on-demand/"},
-    {name:"Know Your Customer Match",desc:"KYC 身份信息匹配验证",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:10,camaraUrl:"https://camaraproject.org/know-your-customer-match/"},
-    {name:"Know Your Customer Age Verification",desc:"年龄验证(是否成年)",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:8,camaraUrl:"https://camaraproject.org/know-your-customer-age-verification/"},
-    {name:"One Time Password SMS",desc:"标准化 OTP 短信发送",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:25,camaraUrl:"https://camaraproject.org/one-time-password-sms/"},
-    {name:"Carrier Billing",desc:"运营商计费/代扣费 API",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"计费与支付",launchMarkets:12,camaraUrl:"https://camaraproject.org/carrier-billing/"},
-    {name:"Call Forwarding Signal",desc:"呼叫转移状态检测(反欺诈)",status:"Stable",version: "2026-09-01",releaseTag:"r3.3",category:"认证与反欺诈",launchMarkets:6,camaraUrl:"https://camaraproject.org/call-forwarding-signal/"},
-    {name:"Device Swap",desc:"检测设备是否被更换",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"设备信息",launchMarkets:10,camaraUrl:"https://camaraproject.org/device-swap/"},
-    {name:"Silent Authentication",desc:"无感网络认证(替代 SMS OTP，Number Verification 的高级模式)",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:5,camaraUrl:"https://github.com/camaraproject/SilentAuthentication"},
-    {name:"Simple Edge Discovery",desc:"边缘计算节点发现与路由",status:"Stable",version: "2026-09-01",releaseTag:"r2.3",category:"边缘计算",launchMarkets:3,camaraUrl:"https://camaraproject.org/simple-edge-discovery/"},
-    {name:"Population Density Data",desc:"区域人口密度估算数据",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"位置服务",launchMarkets:2,camaraUrl:"https://camaraproject.org/population-density-data/"},
-    {name:"IoT SIM Fraud Prevention",desc:"物联网 SIM 卡防欺诈(中国电信贡献)",status:"Beta",version: "2026-09-01",releaseTag:"Beta",category:"物联网安全",launchMarkets:1,camaraUrl:"https://camaraproject.org/iot-sim-fraud-prevention/"},
-    {name:"QoS Booking",desc:"预约特定时间地点的网络质量保障",status:"Beta",version: "2026-09-01",releaseTag:"r1.2",category:"网络质量",launchMarkets:1,camaraUrl:"https://camaraproject.org/qos-booking/"},
-    {name:"Blockchain Public Address",desc:"手机号关联区块链地址(DID)",status:"Stable",version: "2026-09-01",releaseTag:"r2.2",category:"计费与支付",launchMarkets:1,camaraUrl:"https://camaraproject.org/blockchain-public-address/"},
-    {name:"Scam Signal",desc:"通话欺诈信号检测(英国银行业反欺诈)",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:1,camaraUrl:"https://camaraproject.org/scam-signal/"},
-    {name:"Number Recycling",desc:"手机号是否被回收重新分配",status:"Stable",version: "2026-09-01",releaseTag:"r2.2",category:"认证与反欺诈",launchMarkets:2,camaraUrl:"https://camaraproject.org/number-recycling/"},
-    {name:"Location Retrieval",desc:"设备地理位置获取(基于网络数据)",status:"Stable",version: "2026-09-01",releaseTag:"r3.2",category:"位置服务",launchMarkets:5,camaraUrl:"https://camaraproject.org/location-retrieval/"}
+    {name:"Number Verification",desc:"验证手机号与设备 SIM 一致性(无 SMS OTP)",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:35,camaraUrl:"https://camaraproject.org/number-verification/"},
+    {name:"Sim Swap",desc:"检测 SIM 卡近期是否被更换",status:"Stable",version: "2026-09-02",releaseTag:"r3.3",category:"认证与反欺诈",launchMarkets:40,camaraUrl:"https://camaraproject.org/sim-swap/"},
+    {name:"Device Status",desc:"设备在线/漫游/离线状态查询",status:"Stable",version: "2026-09-02",releaseTag:"r2.2",category:"设备信息",launchMarkets:20,camaraUrl:"https://github.com/camaraproject/DeviceStatus"},
+    {name:"Device Roaming Status",desc:"设备漫游状态及所在国家",status:"Stable",version: "2026-09-02",releaseTag:"r1.2",category:"设备信息",launchMarkets:18,camaraUrl:"https://camaraproject.org/device-roaming-status/"},
+    {name:"Device Reachability Status",desc:"设备是否可通过 SMS/数据到达",status:"Stable",version: "2026-09-02",releaseTag:"r1.2",category:"设备信息",launchMarkets:15,camaraUrl:"https://camaraproject.org/device-reachability-status/"},
+    {name:"Location Verification",desc:"设备位置验证(地理围栏)",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"位置服务",launchMarkets:12,camaraUrl:"https://camaraproject.org/location-verification/"},
+    {name:"Quality on Demand",desc:"按需请求网络质量保障(延迟/带宽)",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"网络质量",launchMarkets:8,camaraUrl:"https://camaraproject.org/quality-on-demand/"},
+    {name:"Know Your Customer Match",desc:"KYC 身份信息匹配验证",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:10,camaraUrl:"https://camaraproject.org/know-your-customer-match/"},
+    {name:"Know Your Customer Age Verification",desc:"年龄验证(是否成年)",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:8,camaraUrl:"https://camaraproject.org/know-your-customer-age-verification/"},
+    {name:"One Time Password SMS",desc:"标准化 OTP 短信发送",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:25,camaraUrl:"https://camaraproject.org/one-time-password-sms/"},
+    {name:"Carrier Billing",desc:"运营商计费/代扣费 API",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"计费与支付",launchMarkets:12,camaraUrl:"https://camaraproject.org/carrier-billing/"},
+    {name:"Call Forwarding Signal",desc:"呼叫转移状态检测(反欺诈)",status:"Stable",version: "2026-09-02",releaseTag:"r3.3",category:"认证与反欺诈",launchMarkets:6,camaraUrl:"https://camaraproject.org/call-forwarding-signal/"},
+    {name:"Device Swap",desc:"检测设备是否被更换",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"设备信息",launchMarkets:10,camaraUrl:"https://camaraproject.org/device-swap/"},
+    {name:"Silent Authentication",desc:"无感网络认证(替代 SMS OTP，Number Verification 的高级模式)",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:5,camaraUrl:"https://github.com/camaraproject/SilentAuthentication"},
+    {name:"Simple Edge Discovery",desc:"边缘计算节点发现与路由",status:"Stable",version: "2026-09-02",releaseTag:"r2.3",category:"边缘计算",launchMarkets:3,camaraUrl:"https://camaraproject.org/simple-edge-discovery/"},
+    {name:"Population Density Data",desc:"区域人口密度估算数据",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"位置服务",launchMarkets:2,camaraUrl:"https://camaraproject.org/population-density-data/"},
+    {name:"IoT SIM Fraud Prevention",desc:"物联网 SIM 卡防欺诈(中国电信贡献)",status:"Beta",version: "2026-09-02",releaseTag:"Beta",category:"物联网安全",launchMarkets:1,camaraUrl:"https://camaraproject.org/iot-sim-fraud-prevention/"},
+    {name:"QoS Booking",desc:"预约特定时间地点的网络质量保障",status:"Beta",version: "2026-09-02",releaseTag:"r1.2",category:"网络质量",launchMarkets:1,camaraUrl:"https://camaraproject.org/qos-booking/"},
+    {name:"Blockchain Public Address",desc:"手机号关联区块链地址(DID)",status:"Stable",version: "2026-09-02",releaseTag:"r2.2",category:"计费与支付",launchMarkets:1,camaraUrl:"https://camaraproject.org/blockchain-public-address/"},
+    {name:"Scam Signal",desc:"通话欺诈信号检测(英国银行业反欺诈)",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:1,camaraUrl:"https://camaraproject.org/scam-signal/"},
+    {name:"Number Recycling",desc:"手机号是否被回收重新分配",status:"Stable",version: "2026-09-02",releaseTag:"r2.2",category:"认证与反欺诈",launchMarkets:2,camaraUrl:"https://camaraproject.org/number-recycling/"},
+    {name:"Location Retrieval",desc:"设备地理位置获取(基于网络数据)",status:"Stable",version: "2026-09-02",releaseTag:"r3.2",category:"位置服务",launchMarkets:5,camaraUrl:"https://camaraproject.org/location-retrieval/"}
   ],
   apiCategories:["认证与反欺诈","设备信息","位置服务","网络质量","计费与支付","边缘计算","物联网安全"],
   // 热力矩阵: 运营商 x API 能力
