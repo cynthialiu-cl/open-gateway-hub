@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 GSMA Open Gateway 情报站 - 每日数据抓取脚本
-数据来源: GSMA 官网 press releases、CAMARA GitHub releases、GSMA resources
+数据来源: GSMA 官网(press releases + Discover + 案例研究)、CAMARA 项目新闻、CAMARA GitHub releases
 运行方式: python3 scripts/fetch_data.py
 说明:
   - 抓取 CAMARA GitHub 各 API 仓库最新 release，更新 camaraAPIs 的 releaseTag
-  - 抓取 GSMA press releases 页面，追加新新闻到 news 数组（不覆盖已有）
+  - 抓取多来源新闻（GSMA press releases + GSMA Discover + CAMARA 新闻 + GSMA 案例研究），追加新新闻到 news 数组（不覆盖已有）
   - 抓取 GSMA resources 页面，追加新案例到 appScenarios
   - 更新 meta.version 和 meta.lastUpdate 时间戳
   - 输出抓取报告到 fetch_report.json
@@ -54,6 +54,15 @@ CAMARA_API_REPOS = {
 # GSMA 新闻页面 URL
 GSMA_PRESS_URL = "https://www.gsma.com/solutions-and-impact/gsma-open-gateway/press-releases/"
 GSMA_RESOURCES_URL = "https://www.gsma.com/solutions-and-impact/gsma-open-gateway/resources/"
+# 扩展新闻来源
+GSMA_DISCOVER_URL = "https://www.gsma.com/discover/?www_gsma_com_discover%5Bpage%5D=1"
+GSMA_CASE_STUDIES_URL = "https://www.gsma.com/solutions-and-impact/gsma-open-gateway/gsma-open-gateway-case-studies"
+CAMARA_NEWS_URL = "https://camaraproject.org/category/news/"
+# Open Gateway 相关关键词（用于过滤 GSMA Discover 页面中无关的文章）
+OG_KEYWORDS = ["open gateway", "open-gateway", "camara", "network api", "network-api",
+               "sim swap", "number verification", "number verify", "quality on demand",
+               "qod", "device status", "device swap", "scam signal", "otp",
+               "channel partner", "kyv", "kyc", "edge discovery", "carrier billing"]
 
 # ============ 工具函数 ============
 def fetch_url(url, timeout=15):
@@ -243,6 +252,158 @@ def fetch_gsma_resources():
     return items
 
 
+def fetch_gsma_discover():
+    """抓取 GSMA Discover 页面中与 Open Gateway 相关的文章"""
+    print("\n[2b] 抓取 GSMA Discover (扩展来源)...")
+    html = fetch_url(GSMA_DISCOVER_URL)
+    if not html:
+        print("  [WARN] 无法抓取 GSMA Discover 页面", file=sys.stderr)
+        return []
+
+    news_items = []
+    # GSMA Discover 页面结构: 日期 + 标题 + Read article 链接
+    # 模式: 星期 日期 月份 年份 ... 标题 ... Read article URL
+    pattern = re.compile(
+        r'((?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+\d{1,2}\s+\w+(?:,)?\s*\d{4})'
+        r'[\s\S]{0,800}?'
+        r'(https://www\.gsma\.com/[^"\s\)]+)',
+        re.IGNORECASE
+    )
+    matches = pattern.findall(html)
+    seen_urls = set()
+    for date_str, url in matches:
+        if url in seen_urls:
+            continue
+        seen_urls.add(url)
+        # 用关键词过滤，只保留 Open Gateway 相关
+        url_lower = url.lower()
+        # 如果 URL 直接包含 open-gateway，直接收录
+        if "open-gateway" not in url_lower:
+            # 否则检查页面标题/文本是否包含关键词
+            # 找到 date_str 在 html 中的位置，取附近文本检查关键词
+            pos = html.find(date_str)
+            if pos >= 0:
+                nearby_text = html[pos:pos+800].lower()
+                if not any(kw in nearby_text for kw in OG_KEYWORDS):
+                    continue
+        date = parse_date(date_str)
+        if not date:
+            continue
+        slug = url.rstrip('/').split('/')[-1]
+        title = slug.replace('-', ' ').replace('/', ' ').strip()
+        title = ' '.join(w.capitalize() for w in title.split())
+        news_items.append({
+            "date": date,
+            "title": title,
+            "url": url,
+            "category": "discover"
+        })
+
+    news_items.sort(key=lambda x: x["date"], reverse=True)
+    print(f"  [OK] 抓取到 {len(news_items)} 条 Discover 文章(过滤后)")
+    for item in news_items[:5]:
+        print(f"    {item['date']}: {item['title'][:60]}")
+    return news_items
+
+
+def fetch_camara_news():
+    """抓取 CAMARA 项目官网新闻页面"""
+    print("\n[2c] 抓取 CAMARA 项目新闻...")
+    html = fetch_url(CAMARA_NEWS_URL)
+    if not html:
+        print("  [WARN] 无法抓取 CAMARA 新闻页面", file=sys.stderr)
+        return []
+
+    news_items = []
+    # CAMARA 新闻页面结构: 文章标题 + 日期 + 链接
+    # 尝试匹配标题和日期
+    # 模式1: <a href="URL">标题</a> ... 日期
+    # 模式2: 标题文本后跟日期
+    # CAMARA 使用 WordPress，文章结构较为标准
+    title_pattern = re.compile(
+        r'<h[1-3][^>]*>\s*<a[^>]+href="(https://camaraproject\.org/[^"]+)"[^>]*>([^<]+)</a>',
+        re.IGNORECASE
+    )
+    # 日期匹配: "Month DD, YYYY" 或 "DD Month YYYY"
+    date_pattern = re.compile(
+        r'((?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2},?\s+\d{4})',
+        re.IGNORECASE
+    )
+
+    # 找到所有文章链接
+    for match in title_pattern.finditer(html):
+        url = match.group(1)
+        title = match.group(2).strip()
+        # 在标题位置附近找日期
+        pos = match.end()
+        nearby = html[pos:pos+500]
+        date_match = date_pattern.search(nearby)
+        if date_match:
+            date = parse_date(date_match.group(1))
+            if date:
+                news_items.append({
+                    "date": date,
+                    "title": title,
+                    "url": url,
+                    "category": "camara-news"
+                })
+
+    # 去重
+    seen = set()
+    deduped = []
+    for item in news_items:
+        if item["url"] not in seen:
+            seen.add(item["url"])
+            deduped.append(item)
+
+    deduped.sort(key=lambda x: x["date"], reverse=True)
+    print(f"  [OK] 抓取到 {len(deduped)} 条 CAMARA 新闻")
+    for item in deduped[:5]:
+        print(f"    {item['date']}: {item['title'][:60]}")
+    return deduped
+
+
+def fetch_gsma_case_studies():
+    """抓取 GSMA Open Gateway 案例研究页面"""
+    print("\n[2d] 抓取 GSMA Open Gateway 案例研究...")
+    html = fetch_url(GSMA_CASE_STUDIES_URL)
+    if not html:
+        print("  [WARN] 无法抓取案例研究页面", file=sys.stderr)
+        return []
+
+    items = []
+    pattern = re.compile(
+        r'((?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)\s+\d{1,2}\s+\w+\s+\d{4})'
+        r'[\s\S]{0,500}?'
+        r'(https://www\.gsma\.com/solutions-and-impact/gsma-open-gateway/[^"\s\)]+)',
+        re.IGNORECASE
+    )
+    matches = pattern.findall(html)
+    seen_urls = set()
+    for date_str, url in matches:
+        if url in seen_urls:
+            continue
+        seen_urls.add(url)
+        date = parse_date(date_str)
+        if not date:
+            continue
+        slug = url.rstrip('/').split('/')[-1]
+        title = slug.replace('-', ' ').replace('/', ' ').strip()
+        title = ' '.join(w.capitalize() for w in title.split())
+        items.append({
+            "date": date,
+            "title": title,
+            "url": url,
+            "category": "case-study"
+        })
+
+    items.sort(key=lambda x: x["date"], reverse=True)
+    print(f"  [OK] 抓取到 {len(items)} 条案例研究")
+    for item in items[:5]:
+        print(f"    {item['date']}: {item['title'][:60]}")
+    return items
+
+
 # ============ data.js 更新 ============
 def update_data_js(camara_releases, gsma_news, gsma_resources):
     """更新 data.js 文件"""
@@ -305,42 +466,63 @@ def update_data_js(camara_releases, gsma_news, gsma_resources):
     # 3. 追加新新闻到 news 数组（只追加 data.js 中不存在的）
     # 检查 data.js 中已有的新闻 URL
     existing_urls = set(re.findall(r'sourceUrl:\s*"(https://[^"]+)"', content))
+    # 也检查 url 字段中的链接
+    existing_urls.update(re.findall(r'url:\s*"(https://[^"]+)"', content))
     new_news_to_add = []
-    for item in gsma_news[:10]:  # 只取最新 10 条
-        if item["url"] not in existing_urls:
-            # 映射到现有新闻字段格式
-            if item["category"] == "channel-partner":
-                cat = "partner"
-                cat_name = "渠道伙伴"
-            else:
-                cat = "industry"
-                cat_name = "行业动态"
-            
-            # 从标题推断 region
-            title_lower = item["title"].lower()
-            if any(w in title_lower for w in ["africa", "coure", "netapi"]):
-                region = "非洲"
-            elif any(w in title_lower for w in ["latin", "movitext", "colombian", "uruguay", "claro"]):
-                region = "拉美"
-            elif any(w in title_lower for w in ["greece", "italian", "poland", "new zealand", "europe"]):
-                region = "欧洲"
-            elif any(w in title_lower for w in ["smart", "vnpt"]):
-                region = "亚洲"
-            elif any(w in title_lower for w in ["qatar"]):
-                region = "中东"
-            else:
-                region = "全球"
-            
-            new_news_to_add.append({
-                "entry": (
-                    f'    {{date:"{item["date"]}",cat:"{cat}",catName:"{cat_name}",'
-                    f'vendor:"GSMA",title:"{item["title"]}",source:"GSMA 官网",'
-                    f'region:"{region}",url:"{item["url"]}",'
-                    f'sourceUrl:"{item["url"]}",summary:"{item["title"]}"}}'
-                ),
-                "item": item
-            })
-            existing_urls.add(item["url"])
+    for item in gsma_news[:20]:  # 扩大到 20 条（多来源合并后）
+        if item["url"] in existing_urls:
+            continue
+        # 映射到现有新闻字段格式
+        cat = item.get("category", "")
+        if cat in ("channel-partner", "partner"):
+            cat_field = "partner"
+            cat_name = "渠道伙伴"
+        elif cat == "camara-news":
+            cat_field = "tech"
+            cat_name = "技术趋势"
+        elif cat == "case-study":
+            cat_field = "industry"
+            cat_name = "行业"
+        elif cat == "discover":
+            cat_field = "industry"
+            cat_name = "行业"
+        else:
+            cat_field = "industry"
+            cat_name = "行业动态"
+
+        # 从标题推断 region
+        title_lower = item["title"].lower()
+        if any(w in title_lower for w in ["africa", "coure", "netapi"]):
+            region = "非洲"
+        elif any(w in title_lower for w in ["latin", "movitext", "colombian", "uruguay", "claro", "argentin", "brazil", "paraguay"]):
+            region = "拉美"
+        elif any(w in title_lower for w in ["greece", "italian", "poland", "new zealand", "europe", "france", "german", "spain", "uk"]):
+            region = "欧洲"
+        elif any(w in title_lower for w in ["smart", "vnpt", "india", "japan", "korea", "philippines", "vietnam", "china", "tata"]):
+            region = "亚洲"
+        elif any(w in title_lower for w in ["qatar", "uae", "middle east"]):
+            region = "中东"
+        else:
+            region = "全球"
+
+        # 确定 vendor
+        if "camara" in item["url"].lower():
+            vendor = "CAMARA"
+        elif "gsma" in item["url"].lower():
+            vendor = "GSMA"
+        else:
+            vendor = "行业"
+
+        new_news_to_add.append({
+            "entry": (
+                f'    {{date:"{item["date"]}",cat:"{cat_field}",catName:"{cat_name}",'
+                f'vendor:"{vendor}",title:"{item["title"]}",source:"{vendor} 官网",'
+                f'region:"{region}",url:"{item["url"]}",'
+                f'sourceUrl:"{item["url"]}",summary:"{item["title"]}"}}'
+            ),
+            "item": item
+        })
+        existing_urls.add(item["url"])
 
     if new_news_to_add:
         # 找到 news 数组结束位置
@@ -416,14 +598,37 @@ def main():
     # 1. 抓取 CAMARA releases
     camara_releases = fetch_all_camara_releases()
 
-    # 2. 抓取 GSMA press releases
+    # 2. 抓取新闻（多来源合并）
+    all_news = []
+    # 2a. GSMA press releases
     gsma_news = fetch_gsma_press_releases()
+    all_news.extend(gsma_news)
+    # 2b. GSMA Discover（扩展来源，过滤 Open Gateway 相关）
+    discover_news = fetch_gsma_discover()
+    all_news.extend(discover_news)
+    # 2c. CAMARA 项目新闻
+    camara_news = fetch_camara_news()
+    all_news.extend(camara_news)
+    # 2d. GSMA 案例研究
+    case_studies = fetch_gsma_case_studies()
+    all_news.extend(case_studies)
+
+    # 合并去重（按 URL 去重）
+    seen_urls = set()
+    deduped_news = []
+    for item in all_news:
+        if item["url"] not in seen_urls:
+            seen_urls.add(item["url"])
+            deduped_news.append(item)
+    # 按日期降序
+    deduped_news.sort(key=lambda x: x["date"], reverse=True)
+    print(f"\n[合并] 新闻总数: {len(deduped_news)} 条（去重后）")
 
     # 3. 抓取 GSMA resources
     gsma_resources = fetch_gsma_resources()
 
     # 4. 更新 data.js
-    success, changes = update_data_js(camara_releases, gsma_news, gsma_resources)
+    success, changes = update_data_js(camara_releases, deduped_news, gsma_resources)
 
     if success:
         print("\n[完成] 数据抓取和更新成功")
