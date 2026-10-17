@@ -1,5 +1,5 @@
 {
-  "fetchTime": "2026-10-16 16:37",
+  "fetchTime": "2026-10-17 11:35",
   "releases": {
     "Number Verification": {
       "tag": "r3.2",
@@ -65,11 +65,11 @@
       "name": "r3.2"
     },
     "Simple Edge Discovery": {
-      "tag": "r2.3",
-      "date": "2026-04-23",
+      "tag": "r3.3",
+      "date": "2026-10-16",
       "prerelease": false,
-      "url": "https://github.com/camaraproject/SimpleEdgeDiscovery/releases/tag/r2.3",
-      "name": "r2.3"
+      "url": "https://github.com/camaraproject/SimpleEdgeDiscovery/releases/tag/r3.3",
+      "name": "r3.3"
     },
     "Population Density Data": {
       "tag": "r3.2",
