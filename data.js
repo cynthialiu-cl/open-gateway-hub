@@ -5,7 +5,7 @@
 var APP_DATA = {
   meta: {
     version: "2026-10-30",
-    lastUpdate: "2026-10-30 12:56",
+    lastUpdate: "2026-10-30 18:36",
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 44,
     operatorCount: 86,
@@ -123,7 +123,7 @@ var APP_DATA = {
   // CAMARA API 清单 (名称与 camaraproject.org 官方一致)
   camaraAPIs:[
     {name:"Number Verification",desc:"验证手机号与设备 SIM 一致性(无 SMS OTP)",status:"Stable",version: "2026-10-30",releaseTag:"r4.2",category:"认证与反欺诈",launchMarkets:35,camaraUrl:"https://camaraproject.org/number-verification/"},
-    {name:"Sim Swap",desc:"检测 SIM 卡近期是否被更换",status:"Stable",version: "2026-10-30",releaseTag:"r3.3",category:"认证与反欺诈",launchMarkets:40,camaraUrl:"https://camaraproject.org/sim-swap/"},
+    {name:"Sim Swap",desc:"检测 SIM 卡近期是否被更换",status:"Stable",version: "2026-10-30",releaseTag:"r4.3",category:"认证与反欺诈",launchMarkets:40,camaraUrl:"https://camaraproject.org/sim-swap/"},
     {name:"Device Status",desc:"设备在线/漫游/离线状态查询",status:"Stable",version: "2026-10-30",releaseTag:"r2.2",category:"设备信息",launchMarkets:20,camaraUrl:"https://github.com/camaraproject/DeviceStatus"},
     {name:"Device Roaming Status",desc:"设备漫游状态及所在国家",status:"Stable",version: "2026-10-30",releaseTag:"r1.2",category:"设备信息",launchMarkets:18,camaraUrl:"https://camaraproject.org/device-roaming-status/"},
     {name:"Device Reachability Status",desc:"设备是否可通过 SMS/数据到达",status:"Stable",version: "2026-10-30",releaseTag:"r1.2",category:"设备信息",launchMarkets:15,camaraUrl:"https://camaraproject.org/device-reachability-status/"},

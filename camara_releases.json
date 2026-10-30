@@ -1,5 +1,5 @@
 {
-  "fetchTime": "2026-10-30 12:56",
+  "fetchTime": "2026-10-30 18:36",
   "releases": {
     "Number Verification": {
       "tag": "r4.2",
@@ -9,11 +9,11 @@
       "name": "r4.2"
     },
     "Sim Swap": {
-      "tag": "r3.3",
-      "date": "2025-12-01",
+      "tag": "r4.3",
+      "date": "2026-10-30",
       "prerelease": false,
-      "url": "https://github.com/camaraproject/SimSwap/releases/tag/r3.3",
-      "name": "r3.3"
+      "url": "https://github.com/camaraproject/SimSwap/releases/tag/r4.3",
+      "name": "r4.3"
     },
     "Device Status": {
       "tag": "r2.2",
