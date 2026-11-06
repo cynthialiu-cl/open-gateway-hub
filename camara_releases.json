@@ -1,5 +1,5 @@
 {
-  "fetchTime": "2026-11-06 13:43",
+  "fetchTime": "2026-11-06 19:42",
   "releases": {
     "Number Verification": {
       "tag": "r4.2",
@@ -72,11 +72,11 @@
       "name": "r3.3"
     },
     "Population Density Data": {
-      "tag": "r3.2",
-      "date": "2025-09-10",
+      "tag": "r4.3",
+      "date": "2026-11-06",
       "prerelease": false,
-      "url": "https://github.com/camaraproject/PopulationDensityData/releases/tag/r3.2",
-      "name": "r3.2"
+      "url": "https://github.com/camaraproject/PopulationDensityData/releases/tag/r4.3",
+      "name": "r4.3"
     },
     "QoS Booking": {
       "tag": "r1.2",

@@ -5,7 +5,7 @@
 var APP_DATA = {
   meta: {
     version: "2026-11-06",
-    lastUpdate: "2026-11-06 13:43",
+    lastUpdate: "2026-11-06 19:42",
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 44,
     operatorCount: 86,
@@ -139,7 +139,7 @@ var APP_DATA = {
     {name:"Device Swap",desc:"检测设备是否被更换",status:"Stable",version: "2026-11-06",releaseTag:"r4.3",category:"设备信息",launchMarkets:10,camaraUrl:"https://camaraproject.org/device-swap/"},
     {name:"Silent Authentication",desc:"无感网络认证(替代 SMS OTP，Number Verification 的高级模式)",status:"Stable",version: "2026-11-06",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:5,camaraUrl:"https://github.com/camaraproject/SilentAuthentication"},
     {name:"Simple Edge Discovery",desc:"边缘计算节点发现与路由",status:"Stable",version: "2026-11-06",releaseTag:"r3.3",category:"边缘计算",launchMarkets:3,camaraUrl:"https://camaraproject.org/simple-edge-discovery/"},
-    {name:"Population Density Data",desc:"区域人口密度估算数据",status:"Stable",version: "2026-11-06",releaseTag:"r3.2",category:"位置服务",launchMarkets:2,camaraUrl:"https://camaraproject.org/population-density-data/"},
+    {name:"Population Density Data",desc:"区域人口密度估算数据",status:"Stable",version: "2026-11-06",releaseTag:"r4.3",category:"位置服务",launchMarkets:2,camaraUrl:"https://camaraproject.org/population-density-data/"},
     {name:"IoT SIM Fraud Prevention",desc:"物联网 SIM 卡防欺诈(中国电信贡献)",status:"Beta",version: "2026-11-06",releaseTag:"Beta",category:"物联网安全",launchMarkets:1,camaraUrl:"https://camaraproject.org/iot-sim-fraud-prevention/"},
     {name:"QoS Booking",desc:"预约特定时间地点的网络质量保障",status:"Beta",version: "2026-11-06",releaseTag:"r1.2",category:"网络质量",launchMarkets:1,camaraUrl:"https://camaraproject.org/qos-booking/"},
     {name:"Blockchain Public Address",desc:"手机号关联区块链地址(DID)",status:"Stable",version: "2026-11-06",releaseTag:"r2.2",category:"计费与支付",launchMarkets:1,camaraUrl:"https://camaraproject.org/blockchain-public-address/"},
