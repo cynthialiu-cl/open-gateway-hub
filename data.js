@@ -5,7 +5,7 @@
 var APP_DATA = {
   meta: {
     version: "2026-11-17",
-    lastUpdate: "2026-11-17 15:08",
+    lastUpdate: "2026-11-17 20:38",
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 44,
     operatorCount: 86,
@@ -135,7 +135,7 @@ var APP_DATA = {
     {name:"Know Your Customer Age Verification",desc:"年龄验证(是否成年)",status:"Stable",version: "2026-11-17",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:8,camaraUrl:"https://camaraproject.org/know-your-customer-age-verification/"},
     {name:"One Time Password SMS",desc:"标准化 OTP 短信发送",status:"Stable",version: "2026-11-17",releaseTag:"r4.3",category:"认证与反欺诈",launchMarkets:25,camaraUrl:"https://camaraproject.org/one-time-password-sms/"},
     {name:"Carrier Billing",desc:"运营商计费/代扣费 API",status:"Stable",version: "2026-11-17",releaseTag:"r3.2",category:"计费与支付",launchMarkets:12,camaraUrl:"https://camaraproject.org/carrier-billing/"},
-    {name:"Call Forwarding Signal",desc:"呼叫转移状态检测(反欺诈)",status:"Stable",version: "2026-11-17",releaseTag:"r3.3",category:"认证与反欺诈",launchMarkets:6,camaraUrl:"https://camaraproject.org/call-forwarding-signal/"},
+    {name:"Call Forwarding Signal",desc:"呼叫转移状态检测(反欺诈)",status:"Stable",version: "2026-11-17",releaseTag:"r4.3",category:"认证与反欺诈",launchMarkets:6,camaraUrl:"https://camaraproject.org/call-forwarding-signal/"},
     {name:"Device Swap",desc:"检测设备是否被更换",status:"Stable",version: "2026-11-17",releaseTag:"r4.3",category:"设备信息",launchMarkets:10,camaraUrl:"https://camaraproject.org/device-swap/"},
     {name:"Silent Authentication",desc:"无感网络认证(替代 SMS OTP，Number Verification 的高级模式)",status:"Stable",version: "2026-11-17",releaseTag:"r3.2",category:"认证与反欺诈",launchMarkets:5,camaraUrl:"https://github.com/camaraproject/SilentAuthentication"},
     {name:"Simple Edge Discovery",desc:"边缘计算节点发现与路由",status:"Stable",version: "2026-11-17",releaseTag:"r3.3",category:"边缘计算",launchMarkets:3,camaraUrl:"https://camaraproject.org/simple-edge-discovery/"},
