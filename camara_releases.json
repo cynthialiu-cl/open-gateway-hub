@@ -1,5 +1,5 @@
 {
-  "fetchTime": "2026-11-17 20:38",
+  "fetchTime": "2026-11-18 14:33",
   "releases": {
     "Number Verification": {
       "tag": "r4.2",
@@ -79,11 +79,11 @@
       "name": "r4.3"
     },
     "QoS Booking": {
-      "tag": "r1.2",
-      "date": "2025-09-12",
+      "tag": "r2.3",
+      "date": "2026-11-18",
       "prerelease": false,
-      "url": "https://github.com/camaraproject/QoSBooking/releases/tag/r1.2",
-      "name": "r1.2"
+      "url": "https://github.com/camaraproject/QoSBooking/releases/tag/r2.3",
+      "name": "r2.3"
     },
     "Blockchain Public Address": {
       "tag": "r2.2",
