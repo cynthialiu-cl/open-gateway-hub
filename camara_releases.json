@@ -1,5 +1,5 @@
 {
-  "fetchTime": "2026-11-18 20:30",
+  "fetchTime": "2026-11-19 14:34",
   "releases": {
     "Number Verification": {
       "tag": "r4.2",
@@ -30,11 +30,11 @@
       "name": "r1.2"
     },
     "Device Reachability Status": {
-      "tag": "r1.2",
-      "date": "2025-09-16",
+      "tag": "r2.3",
+      "date": "2026-11-18",
       "prerelease": false,
-      "url": "https://github.com/camaraproject/DeviceReachabilityStatus/releases/tag/r1.2",
-      "name": "r1.2"
+      "url": "https://github.com/camaraproject/DeviceReachabilityStatus/releases/tag/r2.3",
+      "name": "r2.3"
     },
     "Quality on Demand": {
       "tag": "r3.2",
@@ -93,11 +93,11 @@
       "name": "r2.2"
     },
     "Number Recycling": {
-      "tag": "r2.2",
-      "date": "2025-09-11",
+      "tag": "r3.3",
+      "date": "2026-11-19",
       "prerelease": false,
-      "url": "https://github.com/camaraproject/NumberRecycling/releases/tag/r2.2",
-      "name": "r2.2"
+      "url": "https://github.com/camaraproject/NumberRecycling/releases/tag/r3.3",
+      "name": "r3.3"
     }
   }
 }
