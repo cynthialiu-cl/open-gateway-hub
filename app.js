@@ -34,7 +34,10 @@ function renderHero() {
 var newsFilter = { cat:'', vendor:'', region:'', kw:'' };
 
 function renderNews() {
-  var list = D.news.filter(function(n) {
+  // 兜底排序: 无论数据插入顺序如何, 始终按日期从新到旧渲染
+  var list = D.news.slice().sort(function(a, b) {
+    return (b.date || '').localeCompare(a.date || '');
+  }).filter(function(n) {
     if (newsFilter.cat && n.cat !== newsFilter.cat) return false;
     if (newsFilter.vendor && n.vendor !== newsFilter.vendor) return false;
     if (newsFilter.region && n.region !== newsFilter.region) return false;

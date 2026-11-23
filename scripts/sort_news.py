@@ -58,23 +58,9 @@ for line in lines:
 
 print(f"解析到 {len(entries)} 条新闻")
 
-# 去重: 按 URL 去重, 同 URL 保留更详细(标题更长)的那条
-url_to_best = {}
-no_url_entries = []
-
-for e in entries:
-    if not e["url"] or e["url"] == "#":
-        no_url_entries.append(e)
-        continue
-    if e["url"] not in url_to_best:
-        url_to_best[e["url"]] = e
-    else:
-        # 比较标题长度(raw 总长度近似)
-        if len(e["raw"]) > len(url_to_best[e["url"]]["raw"]):
-            url_to_best[e["url"]] = e
-
-deduped = list(url_to_best.values()) + no_url_entries
-print(f"去重后 {len(deduped)} 条(去除 {len(entries) - len(deduped)} 条重复)")
+# 不做 URL 去重: 同一信源链接可能对应多条不同新闻(如一篇报道覆盖多个发布),
+# 仅按日期排序, 保留全部条目
+deduped = entries
 
 # 按日期从新到旧排序
 def parse_date(d):
