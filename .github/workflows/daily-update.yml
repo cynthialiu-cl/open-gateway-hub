@@ -13,8 +13,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 concurrency:
   group: "daily-update"
@@ -63,21 +61,8 @@ jobs:
           git add data.js camara_releases.json
           git commit -m "data: daily auto-update $(date -u +%Y-%m-%d)"
           git push
-
-      - name: Setup Pages
-        if: steps.changes.outputs.changed == 'true'
-        uses: actions/configure-pages@v4
-
-      - name: Upload artifact
-        if: steps.changes.outputs.changed == 'true'
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-
-      - name: Deploy to GitHub Pages
-        if: steps.changes.outputs.changed == 'true'
-        id: deployment
-        uses: actions/deploy-pages@v4
+        # 注意: 此处不再直接部署 Pages —— push 会自动触发 deploy-pages.yml,
+        # 避免两个工作流并发部署导致 "No artifacts named github-pages" 冲突
 
       - name: No changes - skip deploy
         if: steps.changes.outputs.changed == 'false'
