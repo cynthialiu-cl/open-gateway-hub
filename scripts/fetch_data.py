@@ -58,6 +58,7 @@ GSMA_RESOURCES_URL = "https://www.gsma.com/solutions-and-impact/gsma-open-gatewa
 GSMA_DISCOVER_URL = "https://www.gsma.com/discover/?www_gsma_com_discover%5Bpage%5D=1"
 GSMA_CASE_STUDIES_URL = "https://www.gsma.com/solutions-and-impact/gsma-open-gateway/gsma-open-gateway-case-studies"
 CAMARA_NEWS_URL = "https://camaraproject.org/category/news/"
+CAMARA_RSS_URL = "https://camaraproject.org/feed/"
 # Open Gateway 相关关键词（用于过滤 GSMA Discover 页面中无关的文章）
 OG_KEYWORDS = ["open gateway", "open-gateway", "camara", "network api", "network-api",
                "sim swap", "number verification", "number verify", "quality on demand",
@@ -589,6 +590,60 @@ def update_data_js(camara_releases, gsma_news, gsma_resources):
 
 
 # ============ 主流程 ============
+def fetch_camara_rss():
+    """抓取 CAMARA 项目官网 RSS（WordPress feed，结构稳定，作为 CAMARA 新闻的可靠来源）"""
+    print("\n[2e] 抓取 CAMARA RSS feed...")
+    xml = fetch_url(CAMARA_RSS_URL)
+    if not xml:
+        print(" [WARN] 无法抓取 CAMARA RSS", file=sys.stderr)
+        return []
+
+    items = []
+    # RSS 结构: <item><title>..</title><link>..</link><pubDate>Mon, 10 Nov 2026 ...</pubDate>...
+    item_pattern = re.compile(r'<item>(.*?)</item>', re.DOTALL | re.IGNORECASE)
+    title_pattern = re.compile(r'<title>(?:<!\[CDATA\[)?(.*?)(?:\]\]>)?</title>', re.IGNORECASE)
+    link_pattern = re.compile(r'<link>(.*?)</link>', re.IGNORECASE)
+    date_pattern = re.compile(r'<pubDate>(.*?)</pubDate>', re.IGNORECASE)
+
+    for block in item_pattern.findall(xml):
+        t = title_pattern.search(block)
+        l = link_pattern.search(block)
+        d = date_pattern.search(block)
+        if not (t and l and d):
+            continue
+        title = t.group(1).strip()
+        url = l.group(1).strip()
+        raw_date = d.group(1).strip()
+        # RFC822 日期: "Mon, 10 Nov 2026 09:00:00 +0000" -> YYYY-MM-DD
+        month_map = {"Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06",
+                     "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"}
+        m = re.search(r'(\d{1,2})\s+([A-Z][a-z]{2})\s+(\d{4})', raw_date)
+        if not m:
+            continue
+        day, mon, year = m.group(1).zfill(2), month_map.get(m.group(2)), m.group(3)
+        if not mon:
+            continue
+        items.append({
+            "date": f"{year}-{mon}-{day}",
+            "title": title,
+            "url": url,
+            "category": "camara-news"
+        })
+
+    # 去重、按日期降序
+    seen = set()
+    deduped = []
+    for item in items:
+        if item["url"] not in seen:
+            seen.add(item["url"])
+            deduped.append(item)
+    deduped.sort(key=lambda x: x["date"], reverse=True)
+    print(f" [OK] 抓取到 {len(deduped)} 条 CAMARA RSS 文章")
+    for item in deduped[:5]:
+        print(f"   {item['date']}: {item['title'][:60]}")
+    return deduped
+
+
 def main():
     print("=" * 60)
     print("GSMA Open Gateway 情报站 - 每日数据抓取")
@@ -606,9 +661,12 @@ def main():
     # 2b. GSMA Discover（扩展来源，过滤 Open Gateway 相关）
     discover_news = fetch_gsma_discover()
     all_news.extend(discover_news)
-    # 2c. CAMARA 项目新闻
+    # 2c. CAMARA 项目新闻（页面解析，效果不稳定时由 RSS 兜底）
     camara_news = fetch_camara_news()
     all_news.extend(camara_news)
+    # 2e. CAMARA RSS（结构稳定的主要来源）
+    camara_rss = fetch_camara_rss()
+    all_news.extend(camara_rss)
     # 2d. GSMA 案例研究
     case_studies = fetch_gsma_case_studies()
     all_news.extend(case_studies)

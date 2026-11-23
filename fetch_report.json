@@ -1,0 +1,53 @@
+{
+  "fetchTime": "2026-11-23 10:17",
+  "version": "2026-11-23",
+  "camaraReleasesChecked": 14,
+  "camaraUpdates": [],
+  "gsmaNewsFetched": 30,
+  "newNewsAdded": 7,
+  "newNewsItems": [
+    {
+      "date": "2026-07-31",
+      "title": "Turning telco networks into programmable Spatial Web infrastructure",
+      "url": "https://camaraproject.org/2026/07/31/turning-telco-networks-into-programmable-spatial-web-infrastructure/",
+      "category": "camara-news"
+    },
+    {
+      "date": "2026-07-28",
+      "title": "From Insight to Action: Session Insights Reaches Its First Alpha Release",
+      "url": "https://camaraproject.org/2026/07/28/from-insight-to-action-session-insights-reaches-its-first-alpha-release/",
+      "category": "camara-news"
+    },
+    {
+      "date": "2026-07-16",
+      "title": "RCR Wireless: The Agentic Network — Deutsche Telekom on APIs for trusted AI",
+      "url": "https://camaraproject.org/2026/07/16/rcr-wireless-the-agentic-network-deutsche-telekom-on-apis-for-trusted-ai/",
+      "category": "camara-news"
+    },
+    {
+      "date": "2026-07-13",
+      "title": "Vodafone begins global rollout of Number Verify 2.0 to strengthen protection against online fraud Share",
+      "url": "https://camaraproject.org/2026/07/13/vodafone-begins-global-rollout-of-number-verify-2-0-to-strengthen-protection-against-online-fraud-share/",
+      "category": "camara-news"
+    },
+    {
+      "date": "2026-07-10",
+      "title": "Globe and GCash test silent network authentication using the Number Verification API",
+      "url": "https://camaraproject.org/2026/07/10/globe-and-gcash-test-silent-network-authentication-using-the-number-verification-api/",
+      "category": "camara-news"
+    },
+    {
+      "date": "2026-06-11",
+      "title": "Community Spotlight: Alberto Ramos Monagas",
+      "url": "https://camaraproject.org/2026/06/11/community-spotlight-alberto-ramos-monagas/",
+      "category": "camara-news"
+    },
+    {
+      "date": "2026-05-06",
+      "title": "(GSMA) The Dawn of a New Era for Authentication",
+      "url": "https://camaraproject.org/2026/05/06/gsma-the-dawn-of-a-new-era-for-authentication/",
+      "category": "camara-news"
+    }
+  ],
+  "gsmaResourcesFetched": 0
+}
