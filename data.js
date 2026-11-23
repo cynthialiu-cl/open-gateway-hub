@@ -5,7 +5,7 @@
 var APP_DATA = {
   meta: {
     version: "2026-11-23",
-    lastUpdate: "2026-11-23 14:32",
+    lastUpdate: "2026-11-23 21:53",
     updateSchedule: "GitHub Actions 每日 10:00 自动抓取",
     newsCount: 74,
     operatorCount: 86,
@@ -108,8 +108,10 @@ var APP_DATA = {
     {date:"2025-04-01",cat:"tech",catName:"技术趋势",vendor:"中国三大运营商",title:"中国电信联合移动、联通基于 Open Gateway 标准实现 5G QoD 三网能力对接与平台互通",source:"百度百科",region:"中国内地",url:"https://baike.baidu.com/item/GSMA Open Gateway/64211582"},
     {date:"2025-03-04",cat:"policy",catName:"政策",vendor:"中国信通院",title:"中国信通院正式加入 GSMA Open Gateway 倡议，签署合作备忘录",source:"百度百科",region:"中国内地",url:"#"},
     {date:"2024-03-26",cat:"industry",catName:"行业",vendor:"中国三大运营商",title:"中国移动、电信、联通发布商用 OTP API，中国成为全球首个推出 GSMA Open Gateway OTP API 的市场",source:"百度百科",region:"中国内地",url:"#"},
-    {date:"2023-02-27",cat:"policy",catName:"政策",vendor:"GSMA",title:"GSMA 在 MWC 巴塞罗那正式发布 Open Gateway 倡议，21 家运营商签署备忘录，8 个通用 API",source:"百度百科/GSMA",region:"全球",url:"#"}
-
+    {date:"2023-02-27",cat:"policy",catName:"政策",vendor:"GSMA",title:"GSMA 在 MWC 巴塞罗那正式发布 Open Gateway 倡议，21 家运营商签署备忘录，8 个通用 API",source:"百度百科/GSMA",region:"全球",url:"#"},
+    {date:"2026-04-08",cat:"tech",catName:"技术趋势",vendor:"CAMARA",title:"(Ericsson) Four ways agentic AI will reshape the telecom ecosystem",source:"CAMARA 官网",region:"全球",url:"https://camaraproject.org/2026/04/08/ericsson-four-ways-agentic-ai-will-reshape-the-telecom-ecosystem/",sourceUrl:"https://camaraproject.org/2026/04/08/ericsson-four-ways-agentic-ai-will-reshape-the-telecom-ecosystem/",summary:"(Ericsson) Four ways agentic AI will reshape the telecom ecosystem"},
+    {date:"2026-04-01",cat:"tech",catName:"技术趋势",vendor:"CAMARA",title:"(TelecomTV) Network programmability APIs offer monetisation opportunity for telcos – GSMA",source:"CAMARA 官网",region:"全球",url:"https://camaraproject.org/2026/04/01/telecomtv-network-programmability-apis-offer-monetisation-opportunity-for-telcos-gsma/",sourceUrl:"https://camaraproject.org/2026/04/01/telecomtv-network-programmability-apis-offer-monetisation-opportunity-for-telcos-gsma/",summary:"(TelecomTV) Network programmability APIs offer monetisation opportunity for telcos – GSMA"},
+    {date:"2026-03-03",cat:"tech",catName:"技术趋势",vendor:"CAMARA",title:"Aduna Accelerates Global Network API Adoption with Major Ecosystem Expansion at MWC",source:"CAMARA 官网",region:"全球",url:"https://camaraproject.org/2026/03/03/aduna-accelerates-global-network-api-adoption-with-major-ecosystem-expansion-at-mwc/",sourceUrl:"https://camaraproject.org/2026/03/03/aduna-accelerates-global-network-api-adoption-with-major-ecosystem-expansion-at-mwc/",summary:"Aduna Accelerates Global Network API Adoption with Major Ecosystem Expansion at MWC"}
   ],
   newsSources:["GSMA 官网/新闻","CAMARA GitHub/Linux Foundation","行业媒体(5GWorldPro/Asia Tech Journal/Computer Weekly)","运营商官网/新闻中心","财经产业媒体","政府监管机构","研报智库(麦肯锡/GSMA)","微信公众号","MWC 大会公告","Pyxis.tech","EIN Presswire","Briefpedia","中国工信新闻网","APIs.io","LinkedIn"],
   // M2: 运营商能力对标
