@@ -37,6 +37,10 @@ jobs:
         with:
           path: '.'
 
+      # artifact 索引同步延迟缓解: 上传后立即部署偶发 "Found 0 artifact(s)"
+      - name: Wait for artifact index sync
+        run: sleep 20
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

@@ -78,6 +78,12 @@ jobs:
         with:
           path: '.'
 
+      # GitHub artifact 索引存在短暂同步延迟: 上传成功后立即部署偶发
+      # "Found 0 artifact(s)" 失败(本次 0.3 秒即触发)。等待后重试可消除该竞态。
+      - name: Wait for artifact index sync
+        if: steps.changes.outputs.changed == 'true'
+        run: sleep 20
+
       - name: Deploy to GitHub Pages
         if: steps.changes.outputs.changed == 'true'
         id: deployment
