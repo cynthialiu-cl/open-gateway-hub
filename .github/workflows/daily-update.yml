@@ -13,9 +13,12 @@ on:
 
 permissions:
   contents: write
+  pages: write
+  id-token: write
 
+# 与 deploy-pages.yml 使用同一并发组: 两个工作流若同时部署会排队执行而非冲突
 concurrency:
-  group: "daily-update"
+  group: "pages"
   cancel-in-progress: false
 
 jobs:
@@ -61,8 +64,24 @@ jobs:
           git add data.js camara_releases.json
           git commit -m "data: daily auto-update $(date -u +%Y-%m-%d)"
           git push
-        # 注意: 此处不再直接部署 Pages —— push 会自动触发 deploy-pages.yml,
-        # 避免两个工作流并发部署导致 "No artifacts named github-pages" 冲突
+
+      # 重要: 必须在本工作流内直接部署 Pages。
+      # github-actions[bot] 使用 GITHUB_TOKEN 的 push 不会触发其他工作流,
+      # 若只 push 不部署, 每日抓取的更新将永远停留在仓库里而不上线。
+      - name: Setup Pages
+        if: steps.changes.outputs.changed == 'true'
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        if: steps.changes.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        if: steps.changes.outputs.changed == 'true'
+        id: deployment
+        uses: actions/deploy-pages@v4
 
       - name: No changes - skip deploy
         if: steps.changes.outputs.changed == 'false'
