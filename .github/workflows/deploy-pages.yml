@@ -11,9 +11,13 @@ permissions:
   pages: write
   id-token: write
 
+# 同组并发时取消进行中的旧部署, 只部署最新 push。
+# 原因: upload-pages-artifact 会上传并清理同名 "github-pages" artifact,
+# 密集连续 push 时旧运行会因 artifact 被清理而报 "No artifacts named github-pages"。
+# 对新闻站而言只有最新内容需要部署, 取消旧运行是安全且必要的。
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   deploy:
